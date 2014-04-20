@@ -39,8 +39,21 @@ public class Planet extends SpaceObject {
 		Building building = this.buildings.get(buildingType);
 		Ressources cost = building.getCostsForNextLevel();
 		if (this.storage.hasAtLeast(cost) && building.isUpgradeable()) {
+			if (!hasBuilding(buildingType)) {
+				addBuilding(buildingType);
+			}
 			this.storage.subtract(cost);
 			building.increaseLevel();
+		}
+	}
+
+	public boolean hasBuilding(BuildingType buildingType) {
+		return this.buildings.containsKey(buildingType);
+	}
+
+	public void addBuilding(BuildingType buildingType) {
+		if (!hasBuilding(buildingType)) {
+			this.buildings.put(buildingType, new Building(buildingType));
 		}
 	}
 

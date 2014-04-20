@@ -8,14 +8,14 @@ public class Building {
 	protected int level;
 	protected int maxLevel;
 
-	public Building(BuildingType type, Ressources cost, int maxLevel) {
+	public Building(BuildingType type, int maxLevel) {
 		this.type = type;
 		this.level = 0;
 		this.maxLevel = maxLevel;
 	}
 
-	public Building(BuildingType type, Ressources cost) {
-		new Building(type, cost, Integer.MAX_VALUE);
+	public Building(BuildingType type) {
+		new Building(type, Integer.MAX_VALUE);
 	}
 
 	public Ressources getCostsForNextLevel() {
