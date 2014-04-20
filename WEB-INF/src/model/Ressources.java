@@ -41,7 +41,7 @@ public class Ressources {
 		for (int i = 0; i < NR_OF_RESSOURCES; i++)
 			if (this.ress[i] < cost.ress[i])
 				throw new InvalidParameterException(
-					"Not enough ressources to subtract this amount");
+						"Not enough ressources to subtract this amount");
 		for (int i = 0; i < NR_OF_RESSOURCES; i++) {
 			this.ress[i] -= cost.ress[i];
 		}
@@ -50,6 +50,12 @@ public class Ressources {
 	public void add(Ressources gain) {
 		for (int i = 0; i < NR_OF_RESSOURCES; i++) {
 			this.ress[i] += gain.ress[i];
+		}
+	}
+
+	public void multiply(double factor) {
+		for (int i = 0; i < NR_OF_RESSOURCES; i++) {
+			this.ress[i] *= factor;
 		}
 	}
 
