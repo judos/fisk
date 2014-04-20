@@ -21,6 +21,10 @@ public class Ressources {
 		initEmptyStorage();
 	}
 
+	public Ressources(double metal, double antimony, double greengoo) {
+		this.ress = new double[] { metal, antimony, greengoo };
+	}
+
 	private void initEmptyStorage() {
 		for (int i = 0; i < NR_OF_RESSOURCES; i++)
 			this.ress[i] = 0;
