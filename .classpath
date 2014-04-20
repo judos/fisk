@@ -21,5 +21,6 @@
 	<classpathentry kind="lib" path="WEB-INF/libs-tomcat/tomcat-i18n-ja.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/libs-tomcat/tomcat-jdbc.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/libs-tomcat/tomcat-util.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/objectdb.jar"/>
 	<classpathentry kind="output" path="WEB-INF/classes"/>
 </classpath>
