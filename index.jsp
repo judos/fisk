@@ -1,9 +1,9 @@
 <html>
 <head>
-<title>App Index for: mytomcat-eclipse-helloworld-scratch</title>
+<title>FISK</title>
 </head>
 <body>
-<h1 align="center">App Index for: mytomcat-eclipse-helloworld</h1>
+<h1 align="center">FISK</h1>
 <ul>
   
   <li>
