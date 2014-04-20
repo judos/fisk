@@ -5,7 +5,7 @@ import model.Ressources;
 public class MetalMine extends Mine {
 
 	public MetalMine(Ressources cost) {
-		super(cost);
+		super("Metal Mine", cost);
 	}
 
 }

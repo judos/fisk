@@ -4,8 +4,8 @@ import model.Ressources;
 
 public class EnergyBuilding extends BuildingType {
 
-	public EnergyBuilding(Ressources cost) {
-		super(cost);
+	public EnergyBuilding(String name, Ressources cost) {
+		super(name, cost);
 	}
 
 }

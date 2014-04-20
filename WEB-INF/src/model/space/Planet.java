@@ -2,6 +2,7 @@ package model.space;
 
 import java.awt.Point;
 import java.util.HashMap;
+import java.util.Map;
 
 import model.Ressources;
 import model.buildings.Building;
@@ -39,12 +40,25 @@ public class Planet extends SpaceObject {
 		Building building = this.buildings.get(buildingType);
 		Ressources cost = building.getCostsForNextLevel();
 		if (this.storage.hasAtLeast(cost) && building.isUpgradeable()) {
-			if (!hasBuilding(buildingType)) {
+			if (!hasBuilding(buildingType) && fulfillRequirements(buildingType)) {
 				addBuilding(buildingType);
 			}
 			this.storage.subtract(cost);
 			building.increaseLevel();
 		}
+	}
+
+	private boolean fulfillRequirements(BuildingType buildingType) {
+		HashMap<String, Integer> requirements = buildingType.getRequirements();
+		for (Map.Entry<String, Integer> set : requirements.entrySet()) {
+			if (this.buildings.containsKey(set.getKey())) {
+				Building building = this.buildings.get(set.getKey());
+				if (building.getLevel() < set.getValue()) {
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 
 	public boolean hasBuilding(BuildingType buildingType) {
