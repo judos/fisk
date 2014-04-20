@@ -2,6 +2,11 @@ package model;
 
 import java.awt.Point;
 
+import model.buildings.AntimonyMine;
+import model.buildings.Biosphere;
+import model.buildings.BuildingType;
+import model.buildings.Laboratory;
+import model.buildings.MetalMine;
 import model.space.Planet;
 import model.space.Universe;
 import model.user.Player;
@@ -18,7 +23,12 @@ public class WorldFactory {
 		int uWidth = 10;
 		int uHeight = 10;
 		Universe u = new Universe(uWidth, uHeight);
+
 		World w = new World(u);
+		BuildingType[] buildings = new BuildingType[] { new MetalMine(),
+			new AntimonyMine(), new Biosphere(), new Laboratory() };
+		for (BuildingType t : buildings)
+			w.addBuilding(t);
 
 		String[] names = new String[] { "judos", "ropeko", "muspelheim", "sirtoby" };
 		for (String name : names) {

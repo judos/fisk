@@ -1,11 +1,11 @@
 package model.buildings;
 
-import model.Ressources;
+import model.GameParameters;
 
 public class MetalMine extends Mine {
 
-	public MetalMine(Ressources cost) {
-		super(cost);
+	public MetalMine() {
+		super(GameParameters.METAL_MINE_COSTS);
 	}
 
 }

@@ -1,11 +1,11 @@
 package model.buildings;
 
-import model.Ressources;
+import model.GameParameters;
 
 public class Biosphere extends BuildingType {
 
-	public Biosphere(Ressources cost) {
-		super(cost);
+	public Biosphere() {
+		super(GameParameters.BIOSPHERE_COSTS);
 	}
 
 }

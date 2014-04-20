@@ -1,11 +1,11 @@
 package model.buildings;
 
-import model.Ressources;
+import model.GameParameters;
 
 public class AntimonyMine extends Mine {
 
-	public AntimonyMine(Ressources cost) {
-		super(cost);
+	public AntimonyMine() {
+		super(GameParameters.ANTIMONY_MINE_COSTS);
 	}
 
 }
