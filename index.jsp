@@ -17,7 +17,11 @@
     <a href="servlet/MyHelloWorldServlet">servlet/MyHelloWorldServlet</a> - Servlet Hello World Example
   </li>
   
-  <%= Test1.doGet() %>
+  <li>
+    <a href="judos">Ingame Area</a>
+  </li>
+  
+  <!-- <%= Test1.doGet() %> -->
   
 </ul>
 </body>
