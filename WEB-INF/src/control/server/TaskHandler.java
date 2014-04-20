@@ -40,7 +40,7 @@ public class TaskHandler implements ServerClockListener{
 	 * @param task Task object to remove.
 	 */
 	public synchronized void removeTask(Task task) {
-		taskQueue.remove(task);
+		taskQueue.remove(task); 
 	}
 
 	@Override
