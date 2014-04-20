@@ -57,4 +57,8 @@ public class Planet extends SpaceObject {
 		}
 	}
 
+	public Ressources getRessources() {
+		return this.storage;
+	}
+
 }

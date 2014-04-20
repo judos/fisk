@@ -14,7 +14,7 @@ public class PlayerPerspective {
 		this.player = p;
 	}
 
-	public String getOutput() {
+	public String getHtml() {
 		return "Hello " + this.player.getName();
 	}
 

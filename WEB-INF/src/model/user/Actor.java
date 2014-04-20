@@ -11,7 +11,7 @@ import model.space.Planet;
 public class Actor {
 
 	protected String name;
-	private HashSet<Planet> planets;
+	protected HashSet<Planet> planets;
 
 	public Actor(String name) {
 		this.name = name;

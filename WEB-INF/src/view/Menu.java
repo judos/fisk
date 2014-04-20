@@ -14,7 +14,7 @@ public class Menu {
 		this.player = p;
 	}
 
-	public String getOutput() {
+	public String getHtml() {
 		StringBuffer html = new StringBuffer();
 		addEntry(html, "Buildings");
 		return html.toString();
