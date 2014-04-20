@@ -5,7 +5,7 @@ import model.GameParameters;
 public class Biosphere extends BuildingType {
 
 	public Biosphere() {
-		super(GameParameters.BIOSPHERE_COSTS);
+		super(GameParameters.BIOSPHERE_NAME, GameParameters.BIOSPHERE_COSTS);
 	}
 
 }

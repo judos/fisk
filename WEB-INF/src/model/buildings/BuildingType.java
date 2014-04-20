@@ -1,5 +1,6 @@
 package model.buildings;
 
+import model.Requirements;
 import model.Ressources;
 
 /**
@@ -10,13 +11,16 @@ public class BuildingType {
 
 	protected Ressources defaultCost;
 	protected int maxLevel;
+	protected Requirements requirements;
+	protected String name;
 
-	public BuildingType(Ressources cost, int maxLevel) {
+	public BuildingType(String name, Ressources cost, int maxLevel) {
 		this.defaultCost = cost;
+		this.requirements = new Requirements();
 	}
 
-	public BuildingType(Ressources cost) {
-		new BuildingType(cost, Integer.MAX_VALUE);
+	public BuildingType(String name, Ressources cost) {
+		new BuildingType(name, cost, Integer.MAX_VALUE);
 	}
 
 	public Ressources getDefaultCost() {
@@ -25,5 +29,13 @@ public class BuildingType {
 
 	public int getMaxLevel() {
 		return this.maxLevel;
+	}
+
+	public Requirements getRequirements() {
+		return this.requirements;
+	}
+
+	public String getName() {
+		return this.name;
 	}
 }

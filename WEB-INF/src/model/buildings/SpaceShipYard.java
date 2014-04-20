@@ -5,7 +5,7 @@ import model.Ressources;
 public class SpaceShipYard extends BuildingType {
 
 	public SpaceShipYard(Ressources cost) {
-		super(cost);
+		super("Space Ship Yard", cost);
 	}
 
 }
