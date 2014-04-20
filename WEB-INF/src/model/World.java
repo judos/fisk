@@ -49,7 +49,7 @@ public class World {
 	/**
 	 * @return the ships
 	 */
-	public ArrayList<Ship> getShips() {
+	public ArrayList<ShipType> getShips() {
 		return ships;
 	}
 
