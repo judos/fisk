@@ -40,8 +40,10 @@ public class Test1 extends HttpServlet {
 	}
 
 	public String doGet() {
-		return "<html><body><h1 align=\"center\">Hi Julian</h1><br>Counter value is: "
+		String result = "<html><body><h1 align=\"center\">Hi Julian</h1><br>Counter value is: "
 			+ this.counter + "</body></html>";
+		this.counter++;
+		return result;
 	}
 
 }
