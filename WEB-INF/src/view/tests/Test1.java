@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Test1 extends HttpServlet {
 
-	private static int counter;
+	private static int counter; 
 
 	public Test1() {
 		this.counter = 0;
