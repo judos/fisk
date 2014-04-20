@@ -2,7 +2,7 @@ package view.tests;
 
 import java.util.PriorityQueue;
 
-public class TaskHandler implements Runnable {
+public class TaskHandler implements ServerClockListener{
 	
 	private PriorityQueue<Task> taskQueue;
 	
@@ -10,19 +10,20 @@ public class TaskHandler implements Runnable {
 		taskQueue = new PriorityQueue<>();
 	}
 	
-	public void addTask(Task task) {
+	public synchronized void addTask(Task task) {
 		taskQueue.add(task);
 	}
 	
-	public void removeTask(Task task) {
+	public synchronized void removeTask(Task task) {
 		taskQueue.remove(task);
 	}
 
 	@Override
-	public void run() {
-		while (true) {
-			Task task = taskQueue.poll();
+	public synchronized void onNewSecond(int serverTime) {
+		Task task = taskQueue.peek();
+		if (task != null && task.getEndTime() == serverTime) {
 			task.getOwner().onTaskReady(task);
+			taskQueue.remove(task);
 		}
 	}
 
