@@ -5,6 +5,8 @@ import java.util.ArrayList;
 /**
  * This class provides a system wide server time in seconds. ServerClock listeners are informed roughly every second
  * about the new server time.
+ * 
+ * @see ServerClockListener
  * @author tobias
  *
  */
