@@ -7,7 +7,6 @@ import model.Ressources;
 import model.buildings.Building;
 import model.buildings.BuildingType;
 import model.user.Actor;
-import model.user.Player;
 
 /**
  * @since 20.04.2014
@@ -31,7 +30,7 @@ public class Planet extends SpaceObject {
 		return "Planet " + this.position.x + " / " + this.position.y;
 	}
 
-	public void setUser(Player user) {
+	public void setOwner(Actor user) {
 		this.owner = user;
 	}
 

@@ -19,6 +19,7 @@ public class Actor {
 	}
 
 	public void addPlanet(Planet p) {
+		p.setOwner(this);
 		this.planets.add(p);
 	}
 
