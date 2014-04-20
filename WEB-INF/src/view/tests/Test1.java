@@ -23,8 +23,12 @@ public class Test1 extends HttpServlet {
 	private World world;
 	private HashMap<String, Player> login;
 	private int counter;
+	private HtmlRender renderer;
+	private boolean initialized;
+	private String projectPath;
 
-	public Test1() {
+	public Test1() throws IOException {
+		super();
 		this.world = WorldFactory.createTestWorld();
 
 		this.login = new HashMap<>();
@@ -56,16 +60,25 @@ public class Test1 extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 		throws IOException, ServletException {
+		if (!this.initialized)
+			initialize();
 
 		String ip = request.getRemoteAddr().toString();
 		Player currentPlayer = this.login.get(ip);
 
-		String html = HtmlRender.getHtmlOutputForPlayer(currentPlayer, "" + this.counter);
+		String html = this.renderer.getHtmlOutputForPlayer(this.world, currentPlayer, ""
+			+ this.counter);
 
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		out.println(html);
 
+	}
+
+	private void initialize() throws IOException {
+		this.projectPath = getServletContext().getRealPath(".");
+		this.renderer = new HtmlRender(this.projectPath);
+		this.initialized = true;
 	}
 
 	public String doGet() {
