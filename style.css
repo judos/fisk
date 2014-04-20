@@ -9,8 +9,8 @@ a {
 }
 
 
-#head_table td {
-	width:200px;
+#head_table span {
+	padding-right:50px;
 }
 
 #menu {

@@ -1,4 +1,4 @@
-package view.server;
+package view.tests;
 
 import java.util.ArrayList;
 
