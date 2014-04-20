@@ -9,13 +9,21 @@ import model.Ressources;
 public class BuildingType {
 
 	protected Ressources defaultCost;
+	protected int maxLevel;
+
+	public BuildingType(Ressources cost, int maxLevel) {
+		this.defaultCost = cost;
+	}
 
 	public BuildingType(Ressources cost) {
-		this.defaultCost = cost;
+		new BuildingType(cost, Integer.MAX_VALUE);
 	}
 
 	public Ressources getDefaultCost() {
 		return this.defaultCost;
 	}
 
+	public int getMaxLevel() {
+		return this.maxLevel;
+	}
 }

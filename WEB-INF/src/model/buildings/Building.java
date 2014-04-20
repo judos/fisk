@@ -6,16 +6,10 @@ public class Building {
 
 	protected BuildingType type;
 	protected int level;
-	protected int maxLevel;
-
-	public Building(BuildingType type, int maxLevel) {
-		this.type = type;
-		this.level = 0;
-		this.maxLevel = maxLevel;
-	}
 
 	public Building(BuildingType type) {
-		new Building(type, Integer.MAX_VALUE);
+		this.type = type;
+		this.level = 0;
 	}
 
 	public Ressources getCostsForNextLevel() {
@@ -33,7 +27,7 @@ public class Building {
 	}
 
 	public boolean isUpgradeable() {
-		return this.level < this.maxLevel;
+		return this.level < this.type.getMaxLevel();
 	}
 
 	public void increaseLevel() {
