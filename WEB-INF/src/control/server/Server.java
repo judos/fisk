@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.World;
-import model.space.WorldFactory;
+import model.WorldFactory;
 import model.user.Player;
 import view.HtmlRender;
 
@@ -21,7 +21,7 @@ import view.HtmlRender;
 public class Server extends HttpServlet {
 
 	private World world;
-	private HashMap<String, Player> login;
+	private HashMap<String, String> login;
 	private int counter;
 	private HtmlRender renderer;
 	private boolean initialized;
@@ -31,11 +31,11 @@ public class Server extends HttpServlet {
 		super();
 		this.world = WorldFactory.createTestWorld();
 
-		this.login = new HashMap<>();
-		login.put("192.168.0.18", this.world.getPlayerByName("ropeko"));
-		login.put("192.168.0.13", this.world.getPlayerByName("judos"));
-		login.put("192.168.0.15", this.world.getPlayerByName("muspelheim"));
-		login.put("192.168.0.19", this.world.getPlayerByName("sirtoby"));
+		this.login = new HashMap<String, String>();
+		login.put("192.168.0.18", "ropeko");
+		login.put("192.168.0.13", "judos");
+		login.put("192.168.0.15", "muspelheim");
+		login.put("192.168.0.19", "sirtoby");
 
 		this.counter = 0;
 		Thread t = new Thread() {
@@ -64,7 +64,7 @@ public class Server extends HttpServlet {
 			initialize();
 
 		String ip = request.getRemoteAddr().toString();
-		Player currentPlayer = this.login.get(ip);
+		Player currentPlayer = this.world.getPlayerByName(this.login.get(ip));
 
 		String html = this.renderer.getHtmlOutputForPlayer(this.world, currentPlayer, ""
 			+ this.counter);

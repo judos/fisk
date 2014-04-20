@@ -1,7 +1,6 @@
 package model.buildings;
 
-import java.util.HashMap;
-
+import model.Requirements;
 import model.Ressources;
 
 /**
@@ -12,12 +11,12 @@ public class BuildingType {
 
 	protected Ressources defaultCost;
 	protected int maxLevel;
-	protected HashMap<String, Integer> requirements;
+	protected Requirements requirements;
 	protected String name;
 
 	public BuildingType(String name, Ressources cost, int maxLevel) {
 		this.defaultCost = cost;
-		this.requirements = new HashMap<String, Integer>();
+		this.requirements = new Requirements();
 	}
 
 	public BuildingType(String name, Ressources cost) {
@@ -32,12 +31,8 @@ public class BuildingType {
 		return this.maxLevel;
 	}
 
-	public HashMap<String, Integer> getRequirements() {
+	public Requirements getRequirements() {
 		return this.requirements;
-	}
-
-	public void addRequirement(String name, int neededLevel) {
-		this.requirements.put(name, neededLevel);
 	}
 
 	public String getName() {
