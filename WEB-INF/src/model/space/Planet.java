@@ -3,7 +3,7 @@ package model.space;
 import java.awt.Point;
 
 import model.Ressources;
-import model.user.User;
+import model.user.Player;
 
 /**
  * @since 20.04.2014
@@ -12,7 +12,7 @@ import model.user.User;
 public class Planet extends SpaceObject {
 
 	protected Ressources storage;
-	protected User owner;
+	protected Player owner;
 
 	public Planet(Point location) {
 		super(location);
@@ -25,7 +25,7 @@ public class Planet extends SpaceObject {
 		return "Planet " + this.position.x + " / " + this.position.y;
 	}
 
-	public void setUser(User user) {
+	public void setUser(Player user) {
 		this.owner = user;
 	}
 }
