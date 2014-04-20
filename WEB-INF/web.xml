@@ -17,10 +17,18 @@
         <servlet-name>MyHelloWorldServlet</servlet-name>
         <servlet-class>myeclipse.MyHelloWorldServlet</servlet-class>
     </servlet>
+    <servlet>
+    	<servlet-name>judos</servlet-name>
+    	<servlet-class>view.tests.Test1</servlet-class>
+    </servlet>
     
     <servlet-mapping>
         <servlet-name>MyHelloWorldServlet</servlet-name>
         <url-pattern>/servlet/MyHelloWorldServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>judos</servlet-name>
+    	<url-pattern>/judos</url-pattern>
     </servlet-mapping>
 
 
