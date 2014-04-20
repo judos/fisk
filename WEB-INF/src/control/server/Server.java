@@ -1,4 +1,4 @@
-package view.tests;
+package control.server;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,7 +18,7 @@ import view.HtmlRender;
  * @since 20.04.2014
  * @author Julian Schelker
  */
-public class Test1 extends HttpServlet {
+public class Server extends HttpServlet {
 
 	private World world;
 	private HashMap<String, Player> login;
@@ -27,7 +27,7 @@ public class Test1 extends HttpServlet {
 	private boolean initialized;
 	private String projectPath;
 
-	public Test1() throws IOException {
+	public Server() throws IOException {
 		super();
 		this.world = WorldFactory.createTestWorld();
 
@@ -77,7 +77,7 @@ public class Test1 extends HttpServlet {
 
 	private void initialize() throws IOException {
 		this.projectPath = getServletContext().getRealPath(".");
-		this.renderer = new HtmlRender(this.projectPath);
+		this.renderer = new HtmlRender();
 		this.initialized = true;
 	}
 

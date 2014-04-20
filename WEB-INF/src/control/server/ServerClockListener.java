@@ -1,4 +1,4 @@
-package view.tests;
+package control.server;
 
 /**
  * This interface is provided for classes, who want to subscribe to the ServerClock class.
