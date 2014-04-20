@@ -1,4 +1,4 @@
-package view.tests;
+package control.server;
 
 import java.util.PriorityQueue;
 

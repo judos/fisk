@@ -8,16 +8,17 @@ import java.security.InvalidParameterException;
  */
 public class Ressources {
 
-	public static final int NR_OF_RESSOURCES = 3;
+	public static final String[] RESSOURCE_NAMES = new String[] { "Metal", "Antimony",
+		"Greengoo" };
 
-	public static final int METAL = 0;
-	public static final int ANTIMONY = 1;
-	public static final int GREENGOO = 2;
+	public static int getNrOfRessources() {
+		return RESSOURCE_NAMES.length;
+	}
 
 	private double[] ress;
 
 	public Ressources() {
-		this.ress = new double[NR_OF_RESSOURCES];
+		this.ress = new double[getNrOfRessources()];
 		initEmptyStorage();
 	}
 
@@ -26,35 +27,35 @@ public class Ressources {
 	}
 
 	private void initEmptyStorage() {
-		for (int i = 0; i < NR_OF_RESSOURCES; i++)
+		for (int i = 0; i < getNrOfRessources(); i++)
 			this.ress[i] = 0;
 	}
 
 	public boolean hasAtLeast(Ressources cost) {
-		for (int i = 0; i < NR_OF_RESSOURCES; i++)
+		for (int i = 0; i < getNrOfRessources(); i++)
 			if (this.ress[i] < cost.ress[i])
 				return false;
 		return true;
 	}
 
 	public void subtract(Ressources cost) {
-		for (int i = 0; i < NR_OF_RESSOURCES; i++)
+		for (int i = 0; i < getNrOfRessources(); i++)
 			if (this.ress[i] < cost.ress[i])
 				throw new InvalidParameterException(
-						"Not enough ressources to subtract this amount");
-		for (int i = 0; i < NR_OF_RESSOURCES; i++) {
+					"Not enough ressources to subtract this amount");
+		for (int i = 0; i < getNrOfRessources(); i++) {
 			this.ress[i] -= cost.ress[i];
 		}
 	}
 
 	public void add(Ressources gain) {
-		for (int i = 0; i < NR_OF_RESSOURCES; i++) {
+		for (int i = 0; i < getNrOfRessources(); i++) {
 			this.ress[i] += gain.ress[i];
 		}
 	}
 
 	public void multiply(double factor) {
-		for (int i = 0; i < NR_OF_RESSOURCES; i++) {
+		for (int i = 0; i < getNrOfRessources(); i++) {
 			this.ress[i] *= factor;
 		}
 	}
