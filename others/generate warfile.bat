@@ -1,1 +1,1 @@
-jar -cvf fisk.war * -fisk.war
+jar -cvf ../fisk.war ../* -../fisk.war
