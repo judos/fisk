@@ -2,6 +2,7 @@ package model.space;
 
 import java.awt.Point;
 
+import model.World;
 import model.user.Player;
 import model.util.RandomJS;
 
@@ -32,4 +33,30 @@ public class WorldFactory {
 		}
 		return u;
 	}
+
+	public static World createTestWorld() {
+
+		int uWidth = 10;
+		int uHeight = 10;
+		Universe u = new Universe(uWidth, uHeight);
+		World w = new World(u);
+
+		String[] names = new String[] { "judos", "ropeko", "muspelheim", "sirtoby" };
+		for (String name : names) {
+
+			Player user = new Player(name);
+			w.addActor(user);
+			do {
+				Point coord = RandomJS.getPoint(0, uWidth - 1, 0, uHeight - 1);
+				if (u.isFreePoint(coord)) {
+					Planet planet = new Planet(coord);
+					planet.setUser(user);
+					u.addSpaceObjectAt(planet);
+					break;
+				}
+			} while (true);
+		}
+		return w;
+	}
+
 }

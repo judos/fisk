@@ -6,6 +6,7 @@ import model.ships.ShipType;
 import model.space.Universe;
 import model.technologies.Technology;
 import model.user.Actor;
+import model.user.Player;
 
 /**
  * @since 20.04.2014
@@ -63,6 +64,14 @@ public class World {
 
 	public void addShip(ShipType s) {
 		this.ships.add(s);
+	}
+
+	public Player getPlayerByName(String name) {
+		for (Actor a : this.actors) {
+			if (a.getName().equals(name))
+				return (Player) a;
+		}
+		return null;
 	}
 
 }
