@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import model.World;
+import model.space.Planet;
 import model.user.Player;
 import model.util.FileUtils;
 
@@ -27,13 +28,20 @@ public class HtmlRender {
 
 		// insert menu
 		Menu menu = new Menu(p);
-		String menuHtml = menu.getOutput();
-		html = html.replaceFirst("_MENU_", menuHtml);
+		html = html.replaceFirst("_MENU_", menu.getHtml());
 
 		// insert main content
 		PlayerPerspective playerPerspective = new PlayerPerspective(p);
-		String content = playerPerspective.getOutput();
-		html = html.replaceFirst("_CONTENT_", content);
+		html = html.replaceFirst("_CONTENT_", playerPerspective.getHtml());
+
+		// replace ressources
+		Planet planet = p.getCurrentPlanet();
+		if (planet != null) {
+			RessourceHtml ress = new RessourceHtml(planet.getRessources());
+			html = html.replaceFirst("_RESSOURCES_", ress.getHtml());
+		}
+		else
+			html = html.replaceFirst("_RESSOURCES_", "- No Planet selected - ");
 
 		return html;
 	}
