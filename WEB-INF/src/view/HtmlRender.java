@@ -7,8 +7,9 @@ import model.user.Player;
  * @author Julian Schelker
  */
 public class HtmlRender {
-	public static String getHtmlOutputForPlayer(Player p) {
+	public static String getHtmlOutputForPlayer(Player p, String debugInfo) {
 
-		return "<html><body>You are logged in as User: " + p.getName() + "</body></html>";
+		return "<html><body>You are logged in as User: " + p.getName() + "<br>"
+			+ debugInfo + "</body></html>";
 	}
 }

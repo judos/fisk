@@ -20,10 +20,9 @@ import view.HtmlRender;
  */
 public class Test1 extends HttpServlet {
 
-	private static int counter; 
 	private World world;
 	private HashMap<String, Player> login;
-
+	private int counter;
 
 	public Test1() {
 		this.world = WorldFactory.createTestWorld();
@@ -33,6 +32,20 @@ public class Test1 extends HttpServlet {
 		login.put("192.168.0.13", this.world.getPlayerByName("judos"));
 		login.put("192.168.0.15", this.world.getPlayerByName("muspelheim"));
 		login.put("192.168.0.19", this.world.getPlayerByName("sirtoby"));
+
+		this.counter = 0;
+		Thread t = new Thread() {
+			@Override
+			public void run() {
+				while (true) {
+					counter++;
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {}
+				}
+			}
+		};
+		t.start();
 	}
 
 	private static final long serialVersionUID = -5406383912075778580L;
@@ -47,7 +60,7 @@ public class Test1 extends HttpServlet {
 		String ip = request.getRemoteAddr().toString();
 		Player currentPlayer = this.login.get(ip);
 
-		String html = HtmlRender.getHtmlOutputForPlayer(currentPlayer);
+		String html = HtmlRender.getHtmlOutputForPlayer(currentPlayer, "" + this.counter);
 
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
