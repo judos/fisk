@@ -14,6 +14,12 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Test1 extends HttpServlet {
 
+	private int counter;
+
+	public Test1() {
+		this.counter = 0;
+	}
+
 	private static final long serialVersionUID = -5406383912075778580L;
 
 	/**
@@ -26,7 +32,9 @@ public class Test1 extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.println("<html>");
 		out.println("<body>");
-		out.println("<h1 align=\"center\">Hi Julian</h1>");
+		out.println("<h1 align=\"center\">Hi Julian</h1><br>");
+		out.println("Counter value is: " + this.counter);
+		this.counter++;
 		out.println("</body>");
 		out.println("</html>");
 	}
