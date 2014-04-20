@@ -1,8 +1,9 @@
-package model.space;
+package model;
 
 import java.awt.Point;
 
-import model.World;
+import model.space.Planet;
+import model.space.Universe;
 import model.user.Player;
 import model.util.RandomJS;
 
@@ -28,7 +29,7 @@ public class WorldFactory {
 				Point coord = RandomJS.getPoint(0, uWidth - 1, 0, uHeight - 1);
 				if (u.isFreePoint(coord)) {
 					Planet planet = new Planet(coord);
-					planet.setOwner(user);
+					user.addPlanet(planet);
 					u.addSpaceObjectAt(planet);
 					break;
 				}

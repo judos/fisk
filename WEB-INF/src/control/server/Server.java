@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.World;
-import model.space.WorldFactory;
+import model.WorldFactory;
 import model.user.Player;
 import view.HtmlRender;
 
