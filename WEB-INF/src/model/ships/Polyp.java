@@ -1,12 +1,12 @@
 package model.ships;
 
+import model.GameParameters;
+
 public class Polyp extends ShipType {
 
-	public final static double POLYP_ATTACK = 100;
-	public final static double POLYP_DEF = 50;
-
 	public Polyp() {
-		super(POLYP_ATTACK, POLYP_DEF);
+		super(GameParameters.POLYP_ATTACK, GameParameters.POLYP_DEF,
+				GameParameters.POLYP_RESSOURCE);
 	}
 
 }
