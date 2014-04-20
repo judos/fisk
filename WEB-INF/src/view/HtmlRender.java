@@ -14,14 +14,12 @@ import model.util.FileUtils;
 public class HtmlRender {
 	public static final String HTML_TEMPLATE_FILE = "template.html";
 	private String cache;
-	protected PlayerPerspective playerPerspective;
 
 	public HtmlRender(String projectPath) throws IOException {
 
 		// Read the whole template and store it in cache
 		this.cache = FileUtils.readAllFile(new File(projectPath, HTML_TEMPLATE_FILE));
 
-		this.playerPerspective = new PlayerPerspective();
 	}
 
 	public String getHtmlOutputForPlayer(World world, Player p, String debugInfo) {
@@ -31,6 +29,11 @@ public class HtmlRender {
 		Menu menu = new Menu(p);
 		String menuHtml = menu.getOutput();
 		html = html.replaceFirst("_MENU_", menuHtml);
+
+		// insert main content
+		PlayerPerspective playerPerspective = new PlayerPerspective(p);
+		String content = playerPerspective.getOutput();
+		html = html.replaceFirst("_CONTENT_", content);
 
 		return html;
 	}
