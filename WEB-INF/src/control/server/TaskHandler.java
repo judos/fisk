@@ -48,7 +48,7 @@ public class TaskHandler implements ServerClockListener{
 		Task task = taskQueue.peek();
 		if (task != null && task.getEndTime() == serverTime) {
 			task.getOwner().onTaskReady(task);
-			taskQueue.poll();
+			taskQueue.remove(task);
 		}
 	}
 
