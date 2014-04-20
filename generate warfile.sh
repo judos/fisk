@@ -1,0 +1,1 @@
+jar -cvf fisk.war * -fisk.war
