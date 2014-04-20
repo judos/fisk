@@ -1,8 +1,11 @@
 package model.space;
 
 import java.awt.Point;
+import java.util.HashMap;
 
 import model.Ressources;
+import model.buildings.BuildingType;
+import model.user.Actor;
 import model.user.Player;
 
 /**
@@ -12,12 +15,14 @@ import model.user.Player;
 public class Planet extends SpaceObject {
 
 	protected Ressources storage;
-	protected Player owner;
+	protected Actor owner;
+	protected HashMap<BuildingType, Integer> buildings;
 
 	public Planet(Point location) {
 		super(location);
 		this.storage = new Ressources();
 		this.owner = null;
+		this.buildings = new HashMap<BuildingType, Integer>();
 	}
 
 	@Override
@@ -28,4 +33,12 @@ public class Planet extends SpaceObject {
 	public void setUser(Player user) {
 		this.owner = user;
 	}
+
+	public void upgradeBuilding(BuildingType buildingType) {
+		int level = this.buildings.get(buildingType);
+		if (true) {
+			this.buildings.put(buildingType, level++);
+		}
+	}
+
 }

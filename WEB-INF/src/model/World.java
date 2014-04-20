@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
+import model.buildings.BuildingType;
 import model.ships.ShipType;
 import model.space.Universe;
 import model.technologies.Technology;
@@ -16,12 +17,14 @@ public class World {
 
 	protected Universe universe;
 	protected ArrayList<Actor> actors;
+	protected ArrayList<BuildingType> buildings;
 	protected ArrayList<Technology> technologies;
 	protected ArrayList<ShipType> ships;
 
 	public World(Universe u) {
 		this.universe = u;
 		this.actors = new ArrayList<Actor>();
+		this.buildings = new ArrayList<BuildingType>();
 		this.technologies = new ArrayList<Technology>();
 		this.ships = new ArrayList<ShipType>();
 	}
@@ -31,6 +34,10 @@ public class World {
 	 */
 	public Universe getUniverse() {
 		return universe;
+	}
+
+	public ArrayList<BuildingType> getBuildings() {
+		return this.buildings;
 	}
 
 	/**
@@ -56,6 +63,10 @@ public class World {
 
 	public void addActor(Actor p) {
 		this.actors.add(p);
+	}
+
+	public void addBuilding(BuildingType b) {
+		this.buildings.add(b);
 	}
 
 	public void addTechnology(Technology t) {

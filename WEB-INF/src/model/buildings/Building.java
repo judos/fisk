@@ -1,20 +1,24 @@
 package model.buildings;
 
+import model.Ressources;
+
 public class Building {
 
-	protected int level;
 	protected BuildingType type;
+	protected Ressources defaultCost;
 
-	public Building() {
-		this.level = 0;
+	public Building(BuildingType type, Ressources cost) {
+		this.type = type;
+		this.defaultCost = cost;
 	}
 
-	public void upgrade() {
-		this.level++;
+	public Ressources getCostsForNextLevel(int level) {
+		this.defaultCost.multiply(level);
+		return this.defaultCost;
 	}
 
-	public int getLevel() {
-		return this.level;
+	public BuildingType getBuildingType() {
+		return this.type;
 	}
 
 }
