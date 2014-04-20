@@ -1,4 +1,4 @@
-package view.tests;
+package view.server;
 
 /**
  * This interface provides a method for owners of Task to be informed on when their Task is done.

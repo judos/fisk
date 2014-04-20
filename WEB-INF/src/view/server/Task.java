@@ -1,4 +1,4 @@
-package view.tests;
+package view.server;
 
 /**
  * This interface provides stub methods for Task, such as upgrading buildings, etc. Every task must have an owner.

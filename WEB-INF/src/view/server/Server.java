@@ -1,4 +1,4 @@
-package view.tests;
+package view.server;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,13 +18,13 @@ import view.HtmlRender;
  * @since 20.04.2014
  * @author Julian Schelker
  */
-public class Test1 extends HttpServlet {
+public class Server extends HttpServlet {
 
 	private World world;
 	private HashMap<String, Player> login;
 	private int counter;
 
-	public Test1() {
+	public Server() {
 		this.world = WorldFactory.createTestWorld();
 
 		this.login = new HashMap<>();
