@@ -55,7 +55,7 @@ public class Planet extends SpaceObject {
 		}
 	}
 
-	private boolean fulfillRequirements(Object type) {
+	public boolean fulfillRequirements(Object type) {
 		Requirements requirements;
 		if (type instanceof BuildingType) {
 			requirements = ((BuildingType) type).getRequirements();
@@ -66,7 +66,7 @@ public class Planet extends SpaceObject {
 				&& fulfillTechnologyRequirements(requirements);
 	}
 
-	public boolean fulfillBuildingRequirements(Requirements requirements) {
+	private boolean fulfillBuildingRequirements(Requirements requirements) {
 		for (Map.Entry<String, Integer> set : requirements
 				.getBuildingRequirements().entrySet()) {
 			if (this.buildings.containsKey(set.getKey())) {
@@ -79,7 +79,7 @@ public class Planet extends SpaceObject {
 		return true;
 	}
 
-	public boolean fulfillTechnologyRequirements(Requirements requirements) {
+	private boolean fulfillTechnologyRequirements(Requirements requirements) {
 		for (Map.Entry<String, Integer> set : requirements
 				.getTechnologyRequirements().entrySet()) {
 			if (this.technologies.containsKey(set.getKey())) {
