@@ -1,5 +1,5 @@
 package model.buildings;
 
-public class EnergyBuilding extends Building {
+public class EnergyBuilding extends BuildingType {
 
 }

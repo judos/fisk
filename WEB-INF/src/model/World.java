@@ -25,6 +25,34 @@ public class World {
 		this.ships = new ArrayList<ShipType>();
 	}
 
+	/**
+	 * @return the universe
+	 */
+	public Universe getUniverse() {
+		return universe;
+	}
+
+	/**
+	 * @return the actors
+	 */
+	public ArrayList<Actor> getActors() {
+		return actors;
+	}
+
+	/**
+	 * @return the technologies
+	 */
+	public ArrayList<Technology> getTechnologies() {
+		return technologies;
+	}
+
+	/**
+	 * @return the ships
+	 */
+	public ArrayList<Ship> getShips() {
+		return ships;
+	}
+
 	public void addActor(Actor p) {
 		this.actors.add(p);
 	}
