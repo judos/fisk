@@ -77,7 +77,7 @@ public class Server extends HttpServlet {
 
 	private void initialize() throws IOException {
 		this.projectPath = getServletContext().getRealPath(".");
-		this.renderer = new HtmlRender();
+		this.renderer = new HtmlRender(projectPath);
 		this.initialized = true;
 	}
 
