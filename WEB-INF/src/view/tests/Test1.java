@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Test1 extends HttpServlet {
 
-	private int counter;
+	private static int counter;
 
 	public Test1() {
 		this.counter = 0;
@@ -37,6 +37,11 @@ public class Test1 extends HttpServlet {
 		this.counter++;
 		out.println("</body>");
 		out.println("</html>");
+	}
+
+	public String doGet() {
+		return "<html><body><h1 align=\"center\">Hi Julian</h1><br>Counter value is: "
+			+ this.counter + "</body></html>";
 	}
 
 }

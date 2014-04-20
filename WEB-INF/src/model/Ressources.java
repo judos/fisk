@@ -1,5 +1,7 @@
 package model;
 
+import java.security.InvalidParameterException;
+
 /**
  * @since 20.04.2014
  * @author Julian Schelker
@@ -22,6 +24,29 @@ public class Ressources {
 	private void initEmptyStorage() {
 		for (int i = 0; i < NR_OF_RESSOURCES; i++)
 			this.ress[i] = 0;
+	}
+
+	public boolean hasAtLeast(Ressources cost) {
+		for (int i = 0; i < NR_OF_RESSOURCES; i++)
+			if (this.ress[i] < cost.ress[i])
+				return false;
+		return true;
+	}
+
+	public void subtract(Ressources cost) {
+		for (int i = 0; i < NR_OF_RESSOURCES; i++)
+			if (this.ress[i] < cost.ress[i])
+				throw new InvalidParameterException(
+					"Not enough ressources to subtract this amount");
+		for (int i = 0; i < NR_OF_RESSOURCES; i++) {
+			this.ress[i] -= cost.ress[i];
+		}
+	}
+
+	public void add(Ressources gain) {
+		for (int i = 0; i < NR_OF_RESSOURCES; i++) {
+			this.ress[i] += gain.ress[i];
+		}
 	}
 
 }
