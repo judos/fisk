@@ -55,6 +55,21 @@ public class Planet extends SpaceObject {
 		}
 	}
 
+	public void upgradeTechnology(TechnologyType technologyType) {
+		Technology technology = this.technologies.get(technologyType);
+		Ressources cost = technology.getCostsForNextLevel();
+		if (this.storage.hasAtLeast(cost) && technology.isUpgradeable()) {
+			if (!hasTechnology(technologyType)) {
+				if (!fulfillRequirements(technologyType)) {
+					return;
+				}
+				addTechnology(technologyType);
+			}
+			this.storage.subtract(cost);
+			technology.increaseLevel();
+		}
+	}
+
 	public boolean fulfillRequirements(Object type) {
 		Requirements requirements;
 		if (type instanceof BuildingType) {
@@ -96,9 +111,20 @@ public class Planet extends SpaceObject {
 		return this.buildings.containsKey(buildingType);
 	}
 
+	public boolean hasTechnology(TechnologyType technologyType) {
+		return this.technologies.containsKey(technologyType);
+	}
+
 	public void addBuilding(BuildingType buildingType) {
 		if (!hasBuilding(buildingType)) {
 			this.buildings.put(buildingType, new Building(buildingType));
+		}
+	}
+
+	private void addTechnology(TechnologyType technologyType) {
+		if (!hasTechnology(technologyType)) {
+			this.technologies.put(technologyType,
+					new Technology(technologyType));
 		}
 	}
 
