@@ -60,4 +60,12 @@ public class Ressources {
 		}
 	}
 
+	public double getAmountOf(String ressName) {
+		for (int i = 0; i < RESSOURCE_NAMES.length; i++) {
+			if (RESSOURCE_NAMES.equals(ressName))
+				return this.ress[i];
+		}
+		throw new InvalidParameterException("Invalid Ressource Name");
+	}
+
 }

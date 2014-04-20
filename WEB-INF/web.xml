@@ -19,7 +19,7 @@
     </servlet>
     <servlet>
     	<servlet-name>judos</servlet-name>
-    	<servlet-class>view.tests.Test1</servlet-class>
+    	<servlet-class>control.server.Server</servlet-class>
     </servlet>
     
     <servlet-mapping>
