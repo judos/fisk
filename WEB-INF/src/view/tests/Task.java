@@ -1,7 +1,5 @@
 package view.tests;
 
-import java.util.Date;
-
 public interface Task {
 	
 	public int getStartTime();
