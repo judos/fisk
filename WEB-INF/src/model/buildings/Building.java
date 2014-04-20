@@ -3,9 +3,10 @@ package model.buildings;
 public class Building {
 
 	protected int level;
+	protected BuildingType type;
 
 	public Building() {
-		this.level = 1;
+		this.level = 0;
 	}
 
 	public void upgrade() {

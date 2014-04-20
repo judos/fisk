@@ -1,5 +1,5 @@
 package model.buildings;
 
-public class SpaceShipYard {
+public class SpaceShipYard extends BuildingType {
 
 }
