@@ -20,7 +20,7 @@ public class PlayerPerspective {
 	public String getHtml() {
 		String currentPage = this.player.getCurrentPage();
 
-		if (currentPage == MenuHtml.BUILDINGS)
+		if (currentPage.equals(MenuHtml.BUILDINGS))
 			return new BuildingContentHtml(this.world, this.player).getHtml();
 
 		return "Hello " + this.player.getName() + "<br>" + "Shows Page: "

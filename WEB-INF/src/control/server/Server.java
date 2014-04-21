@@ -64,6 +64,7 @@ public class Server extends HttpServlet {
 			initialize();
 		String html = "";
 		try {
+			Debug.clear();
 			String ip = request.getRemoteAddr().toString();
 			Player currentPlayer = this.world.getPlayerByName(this.login.get(ip));
 

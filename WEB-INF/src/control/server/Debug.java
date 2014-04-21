@@ -18,11 +18,19 @@ public class Debug {
 		this.content = new StringBuffer();
 	}
 
-	public void addMsg(String msg) {
+	public static void addMsg(String msg) {
+		getInstance().addMsgStr(msg);
+	}
+
+	private void addMsgStr(String msg) {
 		this.content.append(msg + " <br>");
 	}
 
 	public String getAllDebugMsgs() {
 		return this.content.toString();
+	}
+
+	public static void clear() {
+		getInstance().content = new StringBuffer();
 	}
 }

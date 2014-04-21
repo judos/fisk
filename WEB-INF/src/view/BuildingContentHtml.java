@@ -26,7 +26,7 @@ public class BuildingContentHtml {
 		Planet currentPlanet = this.player.getCurrentPlanet();
 		StringBuffer result = new StringBuffer();
 		for (BuildingType b : buildings) {
-			result.append("<a href=\"?build=" + b.toString() + "\">" + b.toString()
+			result.append("<a href=\"?build=" + b.getName() + "\">" + b.getName()
 				+ "</a> ");
 		}
 		return result.toString();
