@@ -54,6 +54,9 @@ public class WorldFactory {
 				if (u.isFreePoint(coord)) {
 					Planet planet = new Planet(coord);
 					planet.addStartRessources();
+					planet.upgradeBuilding(buildings[4]);
+					planet.upgradeBuilding(buildings[0]);
+
 					user.addPlanet(planet);
 					u.addSpaceObjectAt(planet);
 					break;

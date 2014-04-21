@@ -13,6 +13,7 @@ import model.buildings.Mine;
 import model.technologies.Technology;
 import model.technologies.TechnologyType;
 import model.user.Actor;
+import control.Debug;
 
 /**
  * @since 20.04.2014
@@ -39,13 +40,14 @@ public class Planet extends SpaceObject {
 		this.productionPerSecond = new Ressources();
 	}
 
+	@Override
 	public void updateRessources1Second() {
 		this.storage.add(this.productionPerSecond);
 	}
 
 	public void addStartRessources() {
 		this.storage = new Ressources(GameParameters.START_METAL,
-				GameParameters.START_ANTIMONY, 0);
+			GameParameters.START_ANTIMONY, 0);
 	}
 
 	@Override
@@ -58,25 +60,37 @@ public class Planet extends SpaceObject {
 	}
 
 	public void upgradeBuilding(BuildingType buildingType) {
+		addBuilding(buildingType);
 		Building building = this.buildings.get(buildingType);
 		Ressources cost = building.getCostsForNextLevel();
 		double energyCost = building.getEnergyCost();
 		if (this.storage.hasAtLeast(cost) && building.isUpgradeable()
-				&& hasEnoughEnergy(energyCost)) {
+			&& hasEnoughEnergy(energyCost)) {
 			if (!hasBuilding(buildingType)) {
 				if (!fulfillRequirements(buildingType)) {
 					return;
 				}
-				addBuilding(buildingType);
 			}
 			if (isMine(building)) {
 				Mine mine = (Mine) building.getBuildingType();
 				increaseProduction(computeProductionIncreasement(mine,
-						building.getLevel()));
+					building.getLevel()));
 			}
 			this.storage.subtract(cost);
-			consumeEnergy(energyCost);
+			if (energyCost < 0)
+				increaseEnergy(-energyCost);
+			else
+				consumeEnergy(energyCost);
 			building.increaseLevel();
+		}
+		else {
+			if (!this.storage.hasAtLeast(cost))
+				Debug.addMsg("Not enough ressources, cost: " + cost + ", stored: "
+					+ this.storage);
+			if (!this.hasEnoughEnergy(energyCost))
+				Debug.addMsg("Not enough energy, cost: " + energyCost);
+			if (!building.isUpgradeable())
+				Debug.addMsg("Not upgradeable");
 		}
 	}
 
@@ -109,16 +123,17 @@ public class Planet extends SpaceObject {
 		Requirements requirements;
 		if (type instanceof BuildingType) {
 			requirements = ((BuildingType) type).getRequirements();
-		} else {
+		}
+		else {
 			requirements = ((TechnologyType) type).getRequirements();
 		}
 		return fulfillBuildingRequirements(requirements)
-				&& fulfillTechnologyRequirements(requirements);
+			&& fulfillTechnologyRequirements(requirements);
 	}
 
 	private boolean fulfillBuildingRequirements(Requirements requirements) {
-		for (Map.Entry<String, Integer> set : requirements
-				.getBuildingRequirements().entrySet()) {
+		for (Map.Entry<String, Integer> set : requirements.getBuildingRequirements()
+			.entrySet()) {
 			if (this.buildings.containsKey(set.getKey())) {
 				Building building = this.buildings.get(set.getKey());
 				if (building.getLevel() < set.getValue()) {
@@ -130,8 +145,8 @@ public class Planet extends SpaceObject {
 	}
 
 	private boolean fulfillTechnologyRequirements(Requirements requirements) {
-		for (Map.Entry<String, Integer> set : requirements
-				.getTechnologyRequirements().entrySet()) {
+		for (Map.Entry<String, Integer> set : requirements.getTechnologyRequirements()
+			.entrySet()) {
 			if (this.technologies.containsKey(set.getKey())) {
 				Technology technology = this.technologies.get(set.getKey());
 				if (technology.getLevel() < set.getValue()) {
@@ -158,8 +173,7 @@ public class Planet extends SpaceObject {
 
 	private void addTechnology(TechnologyType technologyType) {
 		if (!hasTechnology(technologyType)) {
-			this.technologies.put(technologyType,
-					new Technology(technologyType));
+			this.technologies.put(technologyType, new Technology(technologyType));
 		}
 	}
 

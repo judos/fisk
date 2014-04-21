@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.World;
 import model.user.Player;
-import control.Debug;
 import control.PlayerActions;
 import control.server.Server;
 import control.server.ServerFactory;
@@ -47,13 +46,11 @@ public class Servlet extends HttpServlet {
 		throws IOException, ServletException {
 		if (!this.initialized)
 			initialize();
-
 		Server s = ServerFactory.getServer();
 		World world = s.getWorld();
 
 		String html = "";
 		try {
-			Debug.clear();
 			String ip = request.getRemoteAddr().toString();
 			Player currentPlayer = world.getPlayerByName(this.login.get(ip));
 

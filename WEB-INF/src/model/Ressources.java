@@ -6,7 +6,7 @@ import java.security.InvalidParameterException;
  * @since 20.04.2014
  * @author Julian Schelker
  */
-public class Ressources {
+public class Ressources implements Cloneable {
 
 	public static final String[] RESSOURCE_NAMES = new String[] { "Metal", "Antimony",
 		"Greengoo" };
@@ -24,6 +24,15 @@ public class Ressources {
 
 	public Ressources(double metal, double antimony, double greengoo) {
 		this.ress = new double[] { metal, antimony, greengoo };
+	}
+
+	public Ressources(double[] ress) {
+		this.ress = ress.clone();
+	}
+
+	@Override
+	public Ressources clone() {
+		return new Ressources(this.ress);
 	}
 
 	private void initEmptyStorage() {
@@ -74,6 +83,14 @@ public class Ressources {
 	 */
 	public double getRessourcePartByIndex(int index) {
 		return this.ress[index];
+	}
+
+	@Override
+	public String toString() {
+		String s = "";
+		for (int i = 0; i < getNrOfRessources(); i++)
+			s += RESSOURCE_NAMES[i] + ": " + this.ress[i] + ", ";
+		return s.substring(0, s.length() - 2);
 	}
 
 }
