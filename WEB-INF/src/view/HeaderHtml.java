@@ -24,22 +24,25 @@ public class HeaderHtml {
 		if (current != null) {
 			Ressources stored = current.getRessources();
 			for (String ressName : Ressources.RESSOURCE_NAMES) {
-				result.append("<span>" + ressName + ": " + stored.getAmountOf(ressName)
-					+ "</span>");
+				result.append("<span>" + ressName + ": "
+						+ stored.getAmountOf(ressName) + "</span>");
 			}
 
 			// Energy
-			double e = current.getEnergy();
+			double freeEnergy = current.getFreeEnergy();
+			double totalEnergy = current.getTotalEnergy();
 			String color = "green";
-			if (e <= 0)
-				color = "red";
-			result.append(HtmlUtil.span("color:" + color, "Energy: " + Math.round(e)));
+			result.append(HtmlUtil.span(
+					"color:" + color,
+					"Energy: " + Math.round(freeEnergy) + "/"
+							+ Math.round(totalEnergy)));
 		}
 
 		// Planets
 		result.append("<span>Planets: <select>");
 		for (Planet p : this.player.getPlanets()) {
-			result.append("<option>" + p.getX() + " / " + p.getY() + "</option>");
+			result.append("<option>" + p.getX() + " / " + p.getY()
+					+ "</option>");
 		}
 		result.append("</select></span>");
 		return result.toString();
