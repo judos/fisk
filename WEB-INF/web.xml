@@ -13,19 +13,19 @@
 
     <!-- Define servlets that are included in the example application -->
 
-    <servlet>
-        <servlet-name>MyHelloWorldServlet</servlet-name>
-        <servlet-class>myeclipse.MyHelloWorldServlet</servlet-class>
+	<servlet>
+    	<servlet-name>Servlet</servlet-name>
+    	<servlet-class>view.Servlet</servlet-class>
     </servlet>
+    <servlet-mapping>
+    	<servlet-name>Servlet</servlet-name>
+    	<url-pattern></url-pattern>
+    </servlet-mapping>
+    
     <servlet>
     	<servlet-name>judos</servlet-name>
     	<servlet-class>control.server.Server</servlet-class>
     </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>MyHelloWorldServlet</servlet-name>
-        <url-pattern>/servlet/MyHelloWorldServlet</url-pattern>
-    </servlet-mapping>
     <servlet-mapping>
     	<servlet-name>judos</servlet-name>
     	<url-pattern>/judos</url-pattern>

@@ -18,6 +18,7 @@ import model.technologies.detailed.LaserTech;
 import model.technologies.detailed.ShieldTech;
 import model.user.Player;
 import model.util.RandomJS;
+import control.server.TaskHandlerI;
 
 /**
  * @since 20.04.2014
@@ -25,13 +26,13 @@ import model.util.RandomJS;
  */
 public class WorldFactory {
 
-	public static World createTestWorld() {
+	public static World createTestWorld(TaskHandlerI th) {
 
 		int uWidth = 10;
 		int uHeight = 10;
-		Universe u = new Universe(uWidth, uHeight);
+		Universe u = new Universe();
 
-		World w = new World(u);
+		World w = new World(u, th);
 		BuildingType[] buildings = new BuildingType[] { new MetalMine(),
 			new AntimonyMine(), new Biosphere(), new Laboratory(), new SolarPowerPlant(),
 			new NuclearPowerPlant(), new SpaceShipYard() };

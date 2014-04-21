@@ -6,7 +6,7 @@ import java.io.IOException;
 import model.World;
 import model.user.Player;
 import model.util.FileUtils;
-import control.server.Debug;
+import control.Debug;
 
 /**
  * @since 20.04.2014

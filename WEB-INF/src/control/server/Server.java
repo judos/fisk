@@ -1,99 +1,92 @@
 package control.server;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.util.HashMap;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 
 import model.World;
-import model.WorldFactory;
-import model.user.Player;
-import view.HtmlRender;
 
 /**
- * @since 20.04.2014
- * @author Julian Schelker
+ * This class provides a system wide server time in seconds. ServerClock
+ * listeners are informed roughly every second about the new server time.
+ * 
+ * @see ServerClockListener
+ * @author tobias
+ * 
  */
-public class Server extends HttpServlet {
+public class Server implements Runnable {
 
+	private int serverTime;
+	private static Server instance;
+	private ArrayList<ServerClockListener> listenerList;
 	private World world;
-	private HashMap<String, String> login;
-	private int counter;
-	private HtmlRender renderer;
-	private boolean initialized;
-	private String projectPath;
-
-	public Server() throws IOException {
-		super();
-		this.world = WorldFactory.createTestWorld();
-
-		this.login = new HashMap<String, String>();
-		login.put("192.168.0.18", "ropeko");
-		login.put("192.168.0.13", "judos");
-		login.put("192.168.0.15", "muspelheim");
-		login.put("192.168.0.19", "sirtoby");
-
-		this.counter = 0;
-		Thread t = new Thread() {
-			@Override
-			public void run() {
-				while (true) {
-					counter++;
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {}
-				}
-			}
-		};
-		t.start();
-	}
-
-	private static final long serialVersionUID = -5406383912075778580L;
 
 	/**
-	 * @param args
+	 * @return the world
 	 */
-	@Override
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-		throws IOException, ServletException {
-		if (!this.initialized)
-			initialize();
-		String html = "";
-		try {
-			Debug.clear();
-			String ip = request.getRemoteAddr().toString();
-			Player currentPlayer = this.world.getPlayerByName(this.login.get(ip));
+	public World getWorld() {
+		return world;
+	}
 
-			PlayerActions action = new PlayerActions(currentPlayer);
-			action.evaluate(request);
+	private Server(World world) {
+		this.world = world;
+		listenerList = new ArrayList<>();
+	}
 
-			html = this.renderer.getHtmlOutputForPlayer(this.world, currentPlayer, "");
-		} catch (Exception e) {
-			html = "Exception thrown: " + e.getMessage();
-
-			StringWriter stringWriter = new StringWriter();
-			PrintWriter writer = new PrintWriter(stringWriter);
-			e.printStackTrace(writer);
-			html += "<br>" + stringWriter.toString();
+	/**
+	 * Returns the instance of this singleton object.
+	 * 
+	 * @param world
+	 * 
+	 * @return ServerClock instance.
+	 */
+	public static Server getInstance(World world) {
+		if (instance == null) {
+			instance = new Server(world);
+			new Thread(instance).start();
 		}
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println(html);
+		return instance;
 	}
 
-	private void initialize() throws IOException {
-		this.projectPath = getServletContext().getRealPath(".");
-		this.renderer = new HtmlRender(projectPath);
-		this.initialized = true;
+	/**
+	 * Subscribes a listener to this clock.
+	 * 
+	 * @param listener
+	 *            ServerClockListener object.
+	 */
+	public void addListener(ServerClockListener listener) {
+		listenerList.add(listener);
 	}
 
-	public String doGet() {
-		return "outdated";
+	/**
+	 * Removes a listener from this clock.
+	 * 
+	 * @param listener
+	 */
+	public void removeListener(ServerClockListener listener) {
+		listenerList.remove(listener);
+	}
+
+	/**
+	 * Returns the current server time in seconds.
+	 * 
+	 * @return integer of the current server time in seconds.
+	 */
+	public int getServerTime() {
+		return serverTime;
+	}
+
+	@Override
+	public void run() {
+		serverTime = 0;
+		while (true) {
+			serverTime++;
+			for (ServerClockListener listener : listenerList)
+				listener.onNewSecond(serverTime);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				return;
+			}
+		}
 	}
 
 }

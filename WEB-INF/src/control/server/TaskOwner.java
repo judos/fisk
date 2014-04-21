@@ -13,7 +13,7 @@ public interface TaskOwner {
 	/**
 	 * Accepts Task objects which are done according to the server time in seconds. 
 	 * 
-	 * @see ServerClock
+	 * @see Server
 	 * @param task Task object that is done.
 	 */
 	public void onTaskReady(Task task);

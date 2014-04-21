@@ -1,18 +1,21 @@
 package control.server;
 
 /**
- * This interface is provided for classes, who want to subscribe to the ServerClock class.
+ * This interface is provided for classes, who want to subscribe to the
+ * ServerClock class.
  * 
- * @see ServerClock
+ * @see Server
  * @author tobias
- *
+ * 
  */
 public interface ServerClockListener {
-	
+
 	/**
 	 * Accepts the newest server time in seconds.
-	 * @param serverTime integer current server time
+	 * 
+	 * @param serverTime
+	 *            integer current server time
 	 */
-	public void onNewSecond(int serverTime);
+	void onNewSecond(int serverTime);
 
 }

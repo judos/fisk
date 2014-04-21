@@ -22,4 +22,12 @@ public class SpaceObject {
 		return this.position.y;
 	}
 
+	public Point getLocation() {
+		return this.position;
+	}
+
+	public void updateRessources1Second() {
+
+	}
+
 }

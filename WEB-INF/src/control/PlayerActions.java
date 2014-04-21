@@ -1,4 +1,4 @@
-package control.server;
+package control;
 
 import javax.servlet.http.HttpServletRequest;
 

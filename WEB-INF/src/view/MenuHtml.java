@@ -15,6 +15,7 @@ public class MenuHtml {
 	public static final String ITEMS = "Items";
 	public static final String COMMANDBRIDGE = "Commandbridge";
 	public static final String STARGATE = "Stargate";
+	public static final String ECONOMY = "Economy";
 
 	public MenuHtml(Player p) {
 		this.player = p;
@@ -24,8 +25,10 @@ public class MenuHtml {
 		StringBuffer html = new StringBuffer();
 		addEntry(html, BUILDINGS);
 		addEntry(html, RESEARCH);
-		addEntry(html, MAP);
 		addEntry(html, STARGATE);
+		html.append("<br>");
+		addEntry(html, ECONOMY);
+		addEntry(html, MAP);
 		addEntry(html, COMMANDBRIDGE);
 		addEntry(html, ITEMS);
 		return html.toString();

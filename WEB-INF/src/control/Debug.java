@@ -1,4 +1,4 @@
-package control.server;
+package control;
 
 /**
  * @since 21.04.2014

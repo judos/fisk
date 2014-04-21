@@ -8,6 +8,7 @@ import model.space.Universe;
 import model.technologies.TechnologyType;
 import model.user.Actor;
 import model.user.Player;
+import control.server.TaskHandlerI;
 
 /**
  * @since 20.04.2014
@@ -20,9 +21,18 @@ public class World {
 	protected ArrayList<BuildingType> buildings;
 	protected ArrayList<TechnologyType> technologies;
 	protected ArrayList<ShipType> ships;
+	protected TaskHandlerI taskHandler;
 
-	public World(Universe u) {
+	/**
+	 * @return the taskHandler
+	 */
+	public TaskHandlerI getTaskHandler() {
+		return taskHandler;
+	}
+
+	public World(Universe u, TaskHandlerI th) {
 		this.universe = u;
+		this.taskHandler = th;
 		this.actors = new ArrayList<Actor>();
 		this.buildings = new ArrayList<BuildingType>();
 		this.technologies = new ArrayList<TechnologyType>();
