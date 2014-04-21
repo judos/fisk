@@ -1,6 +1,7 @@
 package view;
 
 import model.Ressources;
+import model.html.HtmlUtil;
 import model.space.Planet;
 import model.user.Player;
 
@@ -28,6 +29,11 @@ public class HeaderHtml {
 			}
 
 			// Energy
+			double e = current.getEnergy();
+			String color = "green";
+			if (e <= 0)
+				color = "red";
+			result.append(HtmlUtil.span("color:" + color, "Energy: " + Math.round(e)));
 		}
 
 		// Planets

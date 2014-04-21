@@ -25,4 +25,8 @@ public class HtmlUtil {
 		out.append("</ul>");
 		return out.toString();
 	}
+
+	public static String span(String style, String content) {
+		return "<span style=\"" + style + "\">" + content + "</span>";
+	}
 }
