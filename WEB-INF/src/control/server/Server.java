@@ -2,6 +2,7 @@ package control.server;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.HashMap;
 
 import javax.servlet.ServletException;
@@ -73,7 +74,12 @@ public class Server extends HttpServlet {
 
 			html = this.renderer.getHtmlOutputForPlayer(this.world, currentPlayer, "");
 		} catch (Exception e) {
-			html = e.getMessage();
+			html = "Exception thrown: " + e.getMessage();
+
+			StringWriter stringWriter = new StringWriter();
+			PrintWriter writer = new PrintWriter(stringWriter);
+			e.printStackTrace(writer);
+			html += "<br>" + stringWriter.toString();
 		}
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
