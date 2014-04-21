@@ -26,6 +26,8 @@ public class HtmlRender {
 	public String getHtmlOutputForPlayer(World world, Player player, String debugInfo) {
 		String html = new String(cache);
 
+		html = html.replaceFirst("_TITLE_", "FISK v.0 delta");
+
 		// insert menu
 		MenuHtml menu = new MenuHtml(player);
 		html = html.replaceFirst("_MENU_", menu.getHtml());
