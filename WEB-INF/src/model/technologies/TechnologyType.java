@@ -11,6 +11,7 @@ public abstract class TechnologyType {
 	protected String name;
 
 	public TechnologyType(String name, Ressources cost, int maxLevel) {
+		this.name = name;
 		this.defaultCost = cost;
 		this.requirements = new Requirements();
 	}
