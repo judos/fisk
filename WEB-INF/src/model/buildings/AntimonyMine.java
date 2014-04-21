@@ -9,6 +9,7 @@ public class AntimonyMine extends Mine {
 				GameParameters.ANTIMONY_MINE_COSTS,
 				GameParameters.ANTIMONY_MINE_COST_FACTOR,
 				GameParameters.ANTIMONY_MINE_PRODUCTION,
-				GameParameters.ANTIMONY_MINE_PRODUCTION_FACTOR);
+				GameParameters.ANTIMONY_MINE_PRODUCTION_FACTOR,
+				GameParameters.ANTIMONY_MINE_ENERGY);
 	}
 }

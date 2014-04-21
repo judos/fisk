@@ -19,6 +19,7 @@ import model.user.Actor;
 public class Planet extends SpaceObject {
 
 	protected Ressources storage;
+	protected double energy;
 	protected Actor owner;
 	protected HashMap<BuildingType, Building> buildings;
 	protected HashMap<TechnologyType, Technology> technologies;
@@ -27,6 +28,7 @@ public class Planet extends SpaceObject {
 		super(location);
 		this.storage = new Ressources();
 		this.owner = null;
+		this.energy = 0;
 		this.buildings = new HashMap<BuildingType, Building>();
 		this.technologies = new HashMap<TechnologyType, Technology>();
 	}
@@ -74,17 +76,16 @@ public class Planet extends SpaceObject {
 		Requirements requirements;
 		if (type instanceof BuildingType) {
 			requirements = ((BuildingType) type).getRequirements();
-		}
-		else {
+		} else {
 			requirements = ((TechnologyType) type).getRequirements();
 		}
 		return fulfillBuildingRequirements(requirements)
-			&& fulfillTechnologyRequirements(requirements);
+				&& fulfillTechnologyRequirements(requirements);
 	}
 
 	private boolean fulfillBuildingRequirements(Requirements requirements) {
-		for (Map.Entry<String, Integer> set : requirements.getBuildingRequirements()
-			.entrySet()) {
+		for (Map.Entry<String, Integer> set : requirements
+				.getBuildingRequirements().entrySet()) {
 			if (this.buildings.containsKey(set.getKey())) {
 				Building building = this.buildings.get(set.getKey());
 				if (building.getLevel() < set.getValue()) {
@@ -96,8 +97,8 @@ public class Planet extends SpaceObject {
 	}
 
 	private boolean fulfillTechnologyRequirements(Requirements requirements) {
-		for (Map.Entry<String, Integer> set : requirements.getTechnologyRequirements()
-			.entrySet()) {
+		for (Map.Entry<String, Integer> set : requirements
+				.getTechnologyRequirements().entrySet()) {
 			if (this.technologies.containsKey(set.getKey())) {
 				Technology technology = this.technologies.get(set.getKey());
 				if (technology.getLevel() < set.getValue()) {
@@ -124,7 +125,8 @@ public class Planet extends SpaceObject {
 
 	private void addTechnology(TechnologyType technologyType) {
 		if (!hasTechnology(technologyType)) {
-			this.technologies.put(technologyType, new Technology(technologyType));
+			this.technologies.put(technologyType,
+					new Technology(technologyType));
 		}
 	}
 
@@ -135,6 +137,14 @@ public class Planet extends SpaceObject {
 	public Building getBuildingByType(BuildingType type) {
 		addBuilding(type);
 		return this.buildings.get(type);
+	}
+
+	public double getEnergy() {
+		return this.energy;
+	}
+
+	public void consumeEnergy(double energyCost) {
+		this.energy -= energyCost;
 	}
 
 }

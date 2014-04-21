@@ -8,8 +8,8 @@ public class Mine extends BuildingType {
 	protected double productionFacor;
 
 	public Mine(String name, Ressources cost, double costFactor,
-			double production, double productionFactor) {
-		super(name, cost, costFactor);
+			double production, double productionFactor, double energy) {
+		super(name, cost, costFactor, energy);
 		this.defaultProduction = production;
 		this.productionFacor = productionFactor;
 	}

@@ -18,6 +18,11 @@ public class Building {
 		return cost;
 	}
 
+	public double getEnergyCost() {
+		double defaultEnergy = this.type.getDefaultEnergy();
+		return defaultEnergy * Math.pow(this.type.getCostFactor(), this.level);
+	}
+
 	public int getLevel() {
 		return this.level;
 	}

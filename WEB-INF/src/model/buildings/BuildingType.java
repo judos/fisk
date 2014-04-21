@@ -14,18 +14,21 @@ public class BuildingType {
 	protected Requirements requirements;
 	protected String name;
 	protected double costFactor;
+	protected double defaultEnergy;
 
 	public BuildingType(String name, Ressources cost, double costFactor,
-			int maxLevel) {
+			int maxLevel, double defaultEnergy) {
 		this.name = name;
 		this.defaultCost = cost;
 		this.costFactor = costFactor;
 		this.requirements = new Requirements();
 		this.maxLevel = maxLevel;
+		this.defaultEnergy = defaultEnergy;
 	}
 
-	public BuildingType(String name, Ressources cost, double costFactor) {
-		this(name, cost, costFactor, Integer.MAX_VALUE);
+	public BuildingType(String name, Ressources cost, double costFactor,
+			double defaultEnergy) {
+		this(name, cost, costFactor, Integer.MAX_VALUE, defaultEnergy);
 	}
 
 	public Ressources getDefaultCost() {
@@ -46,6 +49,10 @@ public class BuildingType {
 
 	public double getCostFactor() {
 		return this.costFactor;
+	}
+
+	public double getDefaultEnergy() {
+		return this.defaultEnergy;
 	}
 
 }

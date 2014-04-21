@@ -7,7 +7,8 @@ public class SolarPowerPlant extends EnergyBuilding {
 	public SolarPowerPlant() {
 		super(GameParameters.SOLAR_POWER_STATION_NAME,
 				GameParameters.SOLAR_POWER_STATION_COSTS,
-				GameParameters.COST_FACTOR);
+				GameParameters.COST_FACTOR,
+				GameParameters.SOLAR_POWER_STATION_ENERGY);
 	}
 
 }
