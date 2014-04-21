@@ -74,16 +74,17 @@ public class Planet extends SpaceObject {
 		Requirements requirements;
 		if (type instanceof BuildingType) {
 			requirements = ((BuildingType) type).getRequirements();
-		} else {
+		}
+		else {
 			requirements = ((TechnologyType) type).getRequirements();
 		}
 		return fulfillBuildingRequirements(requirements)
-				&& fulfillTechnologyRequirements(requirements);
+			&& fulfillTechnologyRequirements(requirements);
 	}
 
 	private boolean fulfillBuildingRequirements(Requirements requirements) {
-		for (Map.Entry<String, Integer> set : requirements
-				.getBuildingRequirements().entrySet()) {
+		for (Map.Entry<String, Integer> set : requirements.getBuildingRequirements()
+			.entrySet()) {
 			if (this.buildings.containsKey(set.getKey())) {
 				Building building = this.buildings.get(set.getKey());
 				if (building.getLevel() < set.getValue()) {
@@ -95,8 +96,8 @@ public class Planet extends SpaceObject {
 	}
 
 	private boolean fulfillTechnologyRequirements(Requirements requirements) {
-		for (Map.Entry<String, Integer> set : requirements
-				.getTechnologyRequirements().entrySet()) {
+		for (Map.Entry<String, Integer> set : requirements.getTechnologyRequirements()
+			.entrySet()) {
 			if (this.technologies.containsKey(set.getKey())) {
 				Technology technology = this.technologies.get(set.getKey());
 				if (technology.getLevel() < set.getValue()) {
@@ -123,13 +124,17 @@ public class Planet extends SpaceObject {
 
 	private void addTechnology(TechnologyType technologyType) {
 		if (!hasTechnology(technologyType)) {
-			this.technologies.put(technologyType,
-					new Technology(technologyType));
+			this.technologies.put(technologyType, new Technology(technologyType));
 		}
 	}
 
 	public Ressources getRessources() {
 		return this.storage;
+	}
+
+	public Building getBuildingByType(BuildingType type) {
+		addBuilding(type);
+		return this.buildings.get(type);
 	}
 
 }

@@ -68,4 +68,12 @@ public class Ressources {
 		throw new InvalidParameterException("Invalid Ressource Name");
 	}
 
+	/**
+	 * @param index
+	 * @return
+	 */
+	public double getRessourcePartByIndex(int index) {
+		return this.ress[index];
+	}
+
 }
