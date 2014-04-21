@@ -15,6 +15,7 @@ public class BuildingType {
 	protected String name;
 
 	public BuildingType(String name, Ressources cost, int maxLevel) {
+		this.name = name;
 		this.defaultCost = cost;
 		this.requirements = new Requirements();
 	}
