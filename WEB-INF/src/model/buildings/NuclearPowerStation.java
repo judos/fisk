@@ -1,12 +1,12 @@
 package model.buildings;
 
 import model.GameParameters;
-import model.Ressources;
 
 public class NuclearPowerStation extends EnergyBuilding {
 
-	public NuclearPowerStation(Ressources cost) {
-		super(GameParameters.NUCLEAR_POWER_STATION_NAME, cost,
+	public NuclearPowerStation() {
+		super(GameParameters.NUCLEAR_POWER_STATION_NAME,
+				GameParameters.NUCLEAR_POWER_STATION_COSTS,
 				GameParameters.COST_FACTOR);
 	}
 

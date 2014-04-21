@@ -7,6 +7,9 @@ import model.buildings.Biosphere;
 import model.buildings.BuildingType;
 import model.buildings.Laboratory;
 import model.buildings.MetalMine;
+import model.buildings.NuclearPowerStation;
+import model.buildings.SolarPowerStation;
+import model.buildings.SpaceShipYard;
 import model.space.Planet;
 import model.space.Universe;
 import model.user.Player;
@@ -26,11 +29,14 @@ public class WorldFactory {
 
 		World w = new World(u);
 		BuildingType[] buildings = new BuildingType[] { new MetalMine(),
-			new AntimonyMine(), new Biosphere(), new Laboratory() };
+				new AntimonyMine(), new Biosphere(), new Laboratory(),
+				new SolarPowerStation(), new NuclearPowerStation(),
+				new SpaceShipYard() };
 		for (BuildingType t : buildings)
 			w.addBuilding(t);
 
-		String[] names = new String[] { "judos", "ropeko", "muspelheim", "sirtoby" };
+		String[] names = new String[] { "judos", "ropeko", "muspelheim",
+				"sirtoby" };
 		for (String name : names) {
 
 			Player user = new Player(name);
