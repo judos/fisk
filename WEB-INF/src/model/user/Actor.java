@@ -41,6 +41,11 @@ public class Actor {
 	}
 
 	public Technology getTechnologyByType(TechnologyType type) {
+		Technology t = this.tech.get(type);
+		if (t == null) {
+			t = new Technology(type);
+			this.tech.put(type, t);
+		}
 		return this.tech.get(type);
 	}
 
