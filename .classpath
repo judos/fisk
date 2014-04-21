@@ -12,7 +12,11 @@
 	<classpathentry kind="lib" path="WEB-INF/libs-tomcat/jasper-el.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/libs-tomcat/jasper.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/libs-tomcat/jsp-api.jar"/>
-	<classpathentry kind="lib" path="WEB-INF/libs-tomcat/servlet-api.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/libs-tomcat/servlet-api.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/fisk/WEB-INF/lib/tomcat-7.0-doc.zip!/tomcat-7.0-doc/servletapi"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="WEB-INF/libs-tomcat/tomcat-api.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/libs-tomcat/tomcat-coyote.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/libs-tomcat/tomcat-dbcp.jar"/>

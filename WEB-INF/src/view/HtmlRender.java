@@ -27,11 +27,11 @@ public class HtmlRender {
 		String html = new String(cache);
 
 		// insert menu
-		Menu menu = new Menu(p);
+		MenuHtml menu = new MenuHtml(p);
 		html = html.replaceFirst("_MENU_", menu.getHtml());
 
 		// insert main content
-		PlayerPerspective playerPerspective = new PlayerPerspective(p);
+		PlayerPerspective playerPerspective = new PlayerPerspective(world, p);
 		html = html.replaceFirst("_CONTENT_", playerPerspective.getHtml());
 
 		// replace ressources
@@ -42,6 +42,9 @@ public class HtmlRender {
 		}
 		else
 			html = html.replaceFirst("_RESSOURCES_", "- No Planet selected - ");
+
+		// debug string added in footer
+		html = html.replaceFirst("_DEBUG_", debugInfo);
 
 		return html;
 	}

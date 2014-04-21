@@ -9,10 +9,12 @@ import model.space.Planet;
 public class Player extends Actor {
 
 	protected Planet currentPlanet;
+	private String currentPage;
 
 	public Player(String name) {
 		super(name);
 		this.currentPlanet = null;
+		this.currentPage = "Buildings";
 	}
 
 	public Planet getCurrentPlanet() {
@@ -20,5 +22,13 @@ public class Player extends Actor {
 		if (this.currentPlanet == null && this.planets.size() > 0)
 			this.currentPlanet = this.planets.iterator().next();
 		return this.currentPlanet;
+	}
+
+	public void setCurrentPage(String newPage) {
+		this.currentPage = newPage;
+	}
+
+	public String getCurrentPage() {
+		return this.currentPage;
 	}
 }

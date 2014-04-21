@@ -1,5 +1,6 @@
 package view;
 
+import model.World;
 import model.user.Player;
 
 /**
@@ -9,13 +10,21 @@ import model.user.Player;
 public class PlayerPerspective {
 
 	private Player player;
+	private World world;
 
-	public PlayerPerspective(Player p) {
+	public PlayerPerspective(World world, Player p) {
 		this.player = p;
+		this.world = world;
 	}
 
 	public String getHtml() {
-		return "Hello " + this.player.getName();
+		String currentPage = this.player.getCurrentPage();
+
+		if (currentPage == MenuHtml.BUILDINGS)
+			return new BuildingContentHtml(this.world, this.player).getHtml();
+
+		return "Hello " + this.player.getName() + "<br>" + "Shows Page: "
+			+ this.player.getCurrentPage();
 	}
 
 }
