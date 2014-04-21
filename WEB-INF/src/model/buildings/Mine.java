@@ -4,17 +4,17 @@ import model.Ressources;
 
 public class Mine extends BuildingType {
 
-	protected double defaultProduction;
+	protected Ressources defaultProduction;
 	protected double productionFacor;
 
 	public Mine(String name, Ressources cost, double costFactor,
-			double production, double productionFactor, double energy) {
+			Ressources production, double productionFactor, double energy) {
 		super(name, cost, costFactor, energy);
 		this.defaultProduction = production;
 		this.productionFacor = productionFactor;
 	}
 
-	public double getDefaultProduction() {
+	public Ressources getDefaultProduction() {
 		return this.defaultProduction;
 	}
 
