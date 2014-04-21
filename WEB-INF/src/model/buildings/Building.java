@@ -14,7 +14,7 @@ public class Building {
 
 	public Ressources getCostsForNextLevel() {
 		Ressources cost = this.type.getDefaultCost();
-		cost.multiply(this.level);
+		cost.multiply(Math.pow(this.type.getCostFactor(), this.level));
 		return cost;
 	}
 
