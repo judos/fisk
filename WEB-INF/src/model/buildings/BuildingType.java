@@ -20,7 +20,7 @@ public class BuildingType {
 	}
 
 	public BuildingType(String name, Ressources cost) {
-		new BuildingType(name, cost, Integer.MAX_VALUE);
+		this(name, cost, Integer.MAX_VALUE);
 	}
 
 	public Ressources getDefaultCost() {

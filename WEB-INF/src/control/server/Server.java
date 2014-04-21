@@ -3,7 +3,6 @@ package control.server;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -63,29 +62,21 @@ public class Server extends HttpServlet {
 		throws IOException, ServletException {
 		if (!this.initialized)
 			initialize();
+		String html = "";
+		try {
+			String ip = request.getRemoteAddr().toString();
+			Player currentPlayer = this.world.getPlayerByName(this.login.get(ip));
 
-		String ip = request.getRemoteAddr().toString();
-		Player currentPlayer = this.world.getPlayerByName(this.login.get(ip));
+			PlayerActions action = new PlayerActions(currentPlayer);
+			action.evaluate(request);
 
-		Map<String, String[]> x = request.getParameterMap();
-		String debug = "";
-		for (String key : x.keySet()) {
-			debug += key + " = ";
-			for (String value : x.get(key)) {
-				debug += value + ", ";
-			}
+			html = this.renderer.getHtmlOutputForPlayer(this.world, currentPlayer, "");
+		} catch (Exception e) {
+			html = e.getMessage();
 		}
-
-		PlayerActions action = new PlayerActions(currentPlayer);
-		action.evaluate(request);
-
-		String html = this.renderer.getHtmlOutputForPlayer(this.world, currentPlayer, ""
-			+ debug);
-
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		out.println(html);
-
 	}
 
 	private void initialize() throws IOException {

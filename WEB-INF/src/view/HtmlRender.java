@@ -7,6 +7,7 @@ import model.World;
 import model.space.Planet;
 import model.user.Player;
 import model.util.FileUtils;
+import control.server.Debug;
 
 /**
  * @since 20.04.2014
@@ -44,7 +45,7 @@ public class HtmlRender {
 			html = html.replaceFirst("_RESSOURCES_", "- No Planet selected - ");
 
 		// debug string added in footer
-		html = html.replaceFirst("_DEBUG_", debugInfo);
+		html = html.replaceFirst("_DEBUG_", Debug.getInstance().getAllDebugMsgs());
 
 		return html;
 	}
