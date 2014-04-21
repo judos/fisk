@@ -8,7 +8,7 @@ import model.buildings.BuildingType;
 import model.buildings.Laboratory;
 import model.buildings.MetalMine;
 import model.buildings.NuclearPowerStation;
-import model.buildings.SolarPowerStation;
+import model.buildings.SolarPowerPlant;
 import model.buildings.SpaceShipYard;
 import model.space.Planet;
 import model.space.Universe;
@@ -30,7 +30,7 @@ public class WorldFactory {
 		World w = new World(u);
 		BuildingType[] buildings = new BuildingType[] { new MetalMine(),
 				new AntimonyMine(), new Biosphere(), new Laboratory(),
-				new SolarPowerStation(), new NuclearPowerStation(),
+				new SolarPowerPlant(), new NuclearPowerStation(),
 				new SpaceShipYard() };
 		for (BuildingType t : buildings)
 			w.addBuilding(t);
