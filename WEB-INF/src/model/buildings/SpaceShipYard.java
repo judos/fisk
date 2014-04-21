@@ -1,12 +1,12 @@
 package model.buildings;
 
 import model.GameParameters;
-import model.Ressources;
 
 public class SpaceShipYard extends BuildingType {
 
-	public SpaceShipYard(Ressources cost) {
-		super(GameParameters.SPACE_SHIPYARD_NAME, cost,
+	public SpaceShipYard() {
+		super(GameParameters.SPACE_SHIPYARD_NAME,
+				GameParameters.SPACE_SHIP_YARD_COSTS,
 				GameParameters.COST_FACTOR);
 	}
 

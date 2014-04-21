@@ -18,6 +18,12 @@ public class GameParameters {
 	public static final Ressources ANTIMONY_MINE_COSTS = new Ressources(30, 20, 1);
 	public static final Ressources BIOSPHERE_COSTS = new Ressources(1, 1, 1);
 	public static final Ressources LABORATORY_COSTS = new Ressources(1, 1, 1);
+	public static final Ressources NUCLEAR_POWER_STATION_COSTS = new Ressources(
+			1, 1, 1);
+	public static final Ressources SOLAR_POWER_STATION_COSTS = new Ressources(
+			1, 1, 1);
+	public static final Ressources SPACE_SHIP_YARD_COSTS = new Ressources(1, 1,
+			1);
 	public static final String ANTIMONY_MINE_NAME = "Antimony Mine";
 	public static final String BIOSPHERE_NAME = "Biosphere";
 	public static final String METAL_MINE_NAME = "Metal Mine";
