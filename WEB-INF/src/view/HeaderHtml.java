@@ -18,6 +18,7 @@ public class HeaderHtml {
 	public String getHtml() {
 		StringBuffer result = new StringBuffer();
 
+		// Ressources
 		Planet current = this.player.getCurrentPlanet();
 		if (current != null) {
 			Ressources stored = current.getRessources();
@@ -25,8 +26,11 @@ public class HeaderHtml {
 				result.append("<span>" + ressName + ": " + stored.getAmountOf(ressName)
 					+ "</span>");
 			}
+
+			// Energy
 		}
 
+		// Planets
 		result.append("<span>Planets: <select>");
 		for (Planet p : this.player.getPlanets()) {
 			result.append("<option>" + p.getX() + " / " + p.getY() + "</option>");
