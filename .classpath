@@ -26,5 +26,9 @@
 	<classpathentry kind="lib" path="WEB-INF/libs-tomcat/tomcat-jdbc.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/libs-tomcat/tomcat-util.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/objectdb.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/eclipselink/eclipselink.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/eclipselink/javax.persistence_2.1.0.v201304241213.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/eclipselink/javax.persistence.source_2.1.0.v201304241213.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/derby.jar"/>
 	<classpathentry kind="output" path="WEB-INF/classes"/>
 </classpath>
