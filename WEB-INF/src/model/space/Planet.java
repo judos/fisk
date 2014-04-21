@@ -27,12 +27,16 @@ public class Planet extends SpaceObject {
 
 	public Planet(Point location) {
 		super(location);
-		this.storage = new Ressources(GameParameters.START_METAL,
-				GameParameters.START_ANTIMONY, 0);
+		this.storage = new Ressources();
 		this.owner = null;
 		this.energy = 0;
 		this.buildings = new HashMap<BuildingType, Building>();
 		this.technologies = new HashMap<TechnologyType, Technology>();
+	}
+
+	public void addStartRessources() {
+		this.storage = new Ressources(GameParameters.START_METAL,
+				GameParameters.START_ANTIMONY, 0);
 	}
 
 	@Override
