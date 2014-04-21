@@ -20,18 +20,22 @@ import model.user.Actor;
 public class Planet extends SpaceObject {
 
 	protected Ressources storage;
-	protected double energy;
+	protected double totalEnergy;
+	protected double freeEnergy;
 	protected Actor owner;
 	protected HashMap<BuildingType, Building> buildings;
 	protected HashMap<TechnologyType, Technology> technologies;
+	protected Ressources production;
 
 	public Planet(Point location) {
 		super(location);
 		this.storage = new Ressources();
 		this.owner = null;
-		this.energy = 0;
+		this.freeEnergy = 0;
+		this.totalEnergy = 0;
 		this.buildings = new HashMap<BuildingType, Building>();
 		this.technologies = new HashMap<TechnologyType, Technology>();
+		this.production = new Ressources();
 	}
 
 	public void addStartRessources() {
@@ -51,7 +55,9 @@ public class Planet extends SpaceObject {
 	public void upgradeBuilding(BuildingType buildingType) {
 		Building building = this.buildings.get(buildingType);
 		Ressources cost = building.getCostsForNextLevel();
-		if (this.storage.hasAtLeast(cost) && building.isUpgradeable()) {
+		double energyCost = building.getEnergyCost();
+		if (this.storage.hasAtLeast(cost) && building.isUpgradeable()
+				&& hasEnoughEnergy(energyCost)) {
 			if (!hasBuilding(buildingType)) {
 				if (!fulfillRequirements(buildingType)) {
 					return;
@@ -59,7 +65,7 @@ public class Planet extends SpaceObject {
 				addBuilding(buildingType);
 			}
 			this.storage.subtract(cost);
-			consumeEnergy(building.getEnergyCost());
+			consumeEnergy(energyCost);
 			building.increaseLevel();
 		}
 	}
@@ -146,12 +152,25 @@ public class Planet extends SpaceObject {
 		return this.buildings.get(type);
 	}
 
-	public double getEnergy() {
-		return this.energy;
+	public double getFreeEnergy() {
+		return this.freeEnergy;
+	}
+
+	public double getTotalEnergy() {
+		return this.totalEnergy;
 	}
 
 	public void consumeEnergy(double energyCost) {
-		this.energy -= energyCost;
+		this.freeEnergy -= energyCost;
+	}
+
+	public boolean hasEnoughEnergy(double energyCost) {
+		return this.freeEnergy >= energyCost;
+	}
+
+	public void increaseEnergy(double energy) {
+		this.totalEnergy += energy;
+		this.freeEnergy += energy;
 	}
 
 }
