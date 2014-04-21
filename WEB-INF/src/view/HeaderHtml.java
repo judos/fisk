@@ -25,7 +25,7 @@ public class HeaderHtml {
 			Ressources stored = current.getRessources();
 			for (String ressName : Ressources.RESSOURCE_NAMES) {
 				result.append("<span>" + ressName + ": "
-						+ stored.getAmountOf(ressName) + "</span>");
+						+ Math.round(stored.getAmountOf(ressName)) + "</span>");
 			}
 
 			// Energy

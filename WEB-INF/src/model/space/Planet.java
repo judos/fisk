@@ -33,8 +33,8 @@ public class Planet extends SpaceObject {
 		super(location);
 		this.storage = new Ressources();
 		this.owner = null;
-		this.freeEnergy = 0;
-		this.totalEnergy = 0;
+		this.freeEnergy = 3;
+		this.totalEnergy = 10;
 		this.buildings = new HashMap<BuildingType, Building>();
 		this.technologies = new HashMap<TechnologyType, Technology>();
 		this.productionPerSecond = new Ressources();
