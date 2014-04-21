@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.util.HashMap;
 import java.util.Map;
 
+import model.GameParameters;
 import model.Requirements;
 import model.Ressources;
 import model.buildings.Building;
@@ -26,7 +27,8 @@ public class Planet extends SpaceObject {
 
 	public Planet(Point location) {
 		super(location);
-		this.storage = new Ressources();
+		this.storage = new Ressources(GameParameters.START_METAL,
+				GameParameters.START_ANTIMONY, 0);
 		this.owner = null;
 		this.energy = 0;
 		this.buildings = new HashMap<BuildingType, Building>();
@@ -53,6 +55,7 @@ public class Planet extends SpaceObject {
 				addBuilding(buildingType);
 			}
 			this.storage.subtract(cost);
+			consumeEnergy(building.getEnergyCost());
 			building.increaseLevel();
 		}
 	}

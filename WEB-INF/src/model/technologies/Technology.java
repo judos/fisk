@@ -33,4 +33,5 @@ public class Technology {
 	public void increaseLevel() {
 		this.level++;
 	}
+
 }
