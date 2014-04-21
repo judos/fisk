@@ -45,6 +45,7 @@ public class WorldFactory {
 				Point coord = RandomJS.getPoint(0, uWidth - 1, 0, uHeight - 1);
 				if (u.isFreePoint(coord)) {
 					Planet planet = new Planet(coord);
+					planet.addStartRessources();
 					user.addPlanet(planet);
 					u.addSpaceObjectAt(planet);
 					break;
