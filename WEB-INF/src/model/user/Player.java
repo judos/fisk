@@ -31,4 +31,5 @@ public class Player extends Actor {
 	public String getCurrentPage() {
 		return this.currentPage;
 	}
+
 }

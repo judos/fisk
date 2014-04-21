@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 
 import model.World;
-import model.space.Planet;
 import model.user.Player;
 import model.util.FileUtils;
 import control.server.Debug;
@@ -24,25 +23,20 @@ public class HtmlRender {
 
 	}
 
-	public String getHtmlOutputForPlayer(World world, Player p, String debugInfo) {
+	public String getHtmlOutputForPlayer(World world, Player player, String debugInfo) {
 		String html = new String(cache);
 
 		// insert menu
-		MenuHtml menu = new MenuHtml(p);
+		MenuHtml menu = new MenuHtml(player);
 		html = html.replaceFirst("_MENU_", menu.getHtml());
 
 		// insert main content
-		PlayerPerspective playerPerspective = new PlayerPerspective(world, p);
+		PlayerPerspective playerPerspective = new PlayerPerspective(world, player);
 		html = html.replaceFirst("_CONTENT_", playerPerspective.getHtml());
 
 		// replace ressources
-		Planet planet = p.getCurrentPlanet();
-		if (planet != null) {
-			RessourceHtml ress = new RessourceHtml(planet.getRessources());
-			html = html.replaceFirst("_RESSOURCES_", ress.getHtml());
-		}
-		else
-			html = html.replaceFirst("_RESSOURCES_", "- No Planet selected - ");
+		HeaderHtml ress = new HeaderHtml(player);
+		html = html.replaceFirst("_HEADER_", ress.getHtml());
 
 		// debug string added in footer
 		html = html.replaceFirst("_DEBUG_", Debug.getInstance().getAllDebugMsgs());

@@ -31,4 +31,8 @@ public class Actor {
 		return this.name;
 	}
 
+	public HashSet<Planet> getPlanets() {
+		return this.planets;
+	}
+
 }

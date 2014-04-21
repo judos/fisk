@@ -19,7 +19,8 @@ public class HtmlUtil {
 		StringBuffer out = new StringBuffer("<ul>");
 		String[] names = Ressources.RESSOURCE_NAMES;
 		for (int i = 0; i < Ressources.getNrOfRessources(); i++) {
-			out.append("<li>" + names[i] + ": " + r.getRessourcePartByIndex(i) + "</li>");
+			out.append("<li>" + names[i] + ": "
+				+ Math.round(r.getRessourcePartByIndex(i)) + "</li>");
 		}
 		out.append("</ul>");
 		return out.toString();
