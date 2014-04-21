@@ -22,6 +22,8 @@ public class PlayerPerspective {
 
 		if (currentPage.equals(MenuHtml.BUILDINGS))
 			return new BuildingContentHtml(this.world, this.player).getHtml();
+		if (currentPage.equals(MenuHtml.RESEARCH))
+			return new ResearchContentHtml(this.world, this.player).getHtml();
 
 		return "Hello " + this.player.getName() + "<br>" + "Shows Page: "
 			+ this.player.getCurrentPage();

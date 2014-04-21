@@ -3,7 +3,7 @@ package model.technologies;
 import model.Requirements;
 import model.Ressources;
 
-public class TechnologyType {
+public abstract class TechnologyType {
 
 	protected Ressources defaultCost;
 	protected int maxLevel;
@@ -16,7 +16,7 @@ public class TechnologyType {
 	}
 
 	public TechnologyType(String name, Ressources cost) {
-		new TechnologyType(name, cost, Integer.MAX_VALUE);
+		this(name, cost, Integer.MAX_VALUE);
 	}
 
 	public Ressources getDefaultCost() {

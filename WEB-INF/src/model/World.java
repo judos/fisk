@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import model.buildings.BuildingType;
 import model.ships.ShipType;
 import model.space.Universe;
-import model.technologies.Technology;
+import model.technologies.TechnologyType;
 import model.user.Actor;
 import model.user.Player;
 
@@ -18,14 +18,14 @@ public class World {
 	protected Universe universe;
 	protected ArrayList<Actor> actors;
 	protected ArrayList<BuildingType> buildings;
-	protected ArrayList<Technology> technologies;
+	protected ArrayList<TechnologyType> technologies;
 	protected ArrayList<ShipType> ships;
 
 	public World(Universe u) {
 		this.universe = u;
 		this.actors = new ArrayList<Actor>();
 		this.buildings = new ArrayList<BuildingType>();
-		this.technologies = new ArrayList<Technology>();
+		this.technologies = new ArrayList<TechnologyType>();
 		this.ships = new ArrayList<ShipType>();
 	}
 
@@ -50,7 +50,7 @@ public class World {
 	/**
 	 * @return the technologies
 	 */
-	public ArrayList<Technology> getTechnologies() {
+	public ArrayList<TechnologyType> getTechnologies() {
 		return technologies;
 	}
 
@@ -69,7 +69,7 @@ public class World {
 		this.buildings.add(b);
 	}
 
-	public void addTechnology(Technology t) {
+	public void addTechnology(TechnologyType t) {
 		this.technologies.add(t);
 	}
 

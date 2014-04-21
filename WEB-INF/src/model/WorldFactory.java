@@ -12,6 +12,10 @@ import model.buildings.SolarPowerPlant;
 import model.buildings.SpaceShipYard;
 import model.space.Planet;
 import model.space.Universe;
+import model.technologies.TechnologyType;
+import model.technologies.detailed.ArmorTech;
+import model.technologies.detailed.LaserTech;
+import model.technologies.detailed.ShieldTech;
 import model.user.Player;
 import model.util.RandomJS;
 
@@ -29,14 +33,17 @@ public class WorldFactory {
 
 		World w = new World(u);
 		BuildingType[] buildings = new BuildingType[] { new MetalMine(),
-				new AntimonyMine(), new Biosphere(), new Laboratory(),
-				new SolarPowerPlant(), new NuclearPowerPlant(),
-				new SpaceShipYard() };
+			new AntimonyMine(), new Biosphere(), new Laboratory(), new SolarPowerPlant(),
+			new NuclearPowerPlant(), new SpaceShipYard() };
 		for (BuildingType t : buildings)
 			w.addBuilding(t);
 
-		String[] names = new String[] { "judos", "ropeko", "muspelheim",
-				"sirtoby" };
+		TechnologyType[] tech = new TechnologyType[] { new LaserTech(), new ShieldTech(),
+			new ArmorTech() };
+		for (TechnologyType t : tech)
+			w.addTechnology(t);
+
+		String[] names = new String[] { "judos", "ropeko", "muspelheim", "sirtoby" };
 		for (String name : names) {
 
 			Player user = new Player(name);

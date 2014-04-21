@@ -37,5 +37,8 @@ public class GameParameters {
 	public static final String NUCLEAR_POWER_PLANT_NAME = "Nuclear Power Plant";
 	public static final String SOLAR_POWER_PLANT_NAME = "Solar Power Plant";
 	public static final String SPACE_SHIPYARD_NAME = "Space Shipyard";
+	public static final String LASER_TECH_NAME = "Laser Technology";
+	public static final String SHIELD_TECH_NAME = "Shield Technology";
+	public static final String ARMOR_TECH_NAME = "Armor Technology";
 
 }
