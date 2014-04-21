@@ -9,6 +9,7 @@ import model.Requirements;
 import model.Ressources;
 import model.buildings.Building;
 import model.buildings.BuildingType;
+import model.buildings.Mine;
 import model.technologies.Technology;
 import model.technologies.TechnologyType;
 import model.user.Actor;
@@ -25,7 +26,7 @@ public class Planet extends SpaceObject {
 	protected Actor owner;
 	protected HashMap<BuildingType, Building> buildings;
 	protected HashMap<TechnologyType, Technology> technologies;
-	protected Ressources production;
+	protected Ressources productionPerSecond;
 
 	public Planet(Point location) {
 		super(location);
@@ -35,7 +36,7 @@ public class Planet extends SpaceObject {
 		this.totalEnergy = 0;
 		this.buildings = new HashMap<BuildingType, Building>();
 		this.technologies = new HashMap<TechnologyType, Technology>();
-		this.production = new Ressources();
+		this.productionPerSecond = new Ressources();
 	}
 
 	public void addStartRessources() {
@@ -64,10 +65,25 @@ public class Planet extends SpaceObject {
 				}
 				addBuilding(buildingType);
 			}
+			if (isMine(building)) {
+				Mine mine = (Mine) building.getBuildingType();
+				increaseProduction(computeProductionIncreasement(mine,
+						building.getLevel()));
+			}
 			this.storage.subtract(cost);
 			consumeEnergy(energyCost);
 			building.increaseLevel();
 		}
+	}
+
+	public Ressources computeProductionIncreasement(Mine mine, int level) {
+		Ressources inc = mine.getDefaultProduction();
+		inc.multiply(Math.pow(mine.getProductionFactor(), level));
+		return inc;
+	}
+
+	private boolean isMine(Building building) {
+		return building.getBuildingType() instanceof Mine;
 	}
 
 	public void upgradeTechnology(TechnologyType technologyType) {
@@ -171,6 +187,14 @@ public class Planet extends SpaceObject {
 	public void increaseEnergy(double energy) {
 		this.totalEnergy += energy;
 		this.freeEnergy += energy;
+	}
+
+	public void increaseProduction(Ressources inc) {
+		this.productionPerSecond.add(inc);
+	}
+
+	public void decreaseProduction(Ressources dec) {
+		this.productionPerSecond.add(dec);
 	}
 
 }
