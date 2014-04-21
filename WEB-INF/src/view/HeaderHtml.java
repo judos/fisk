@@ -32,6 +32,15 @@ public class HeaderHtml {
 			double freeEnergy = current.getFreeEnergy();
 			double totalEnergy = current.getTotalEnergy();
 			String color = "green";
+			if (freeEnergy <= totalEnergy * 0.75) {
+				color = "lightgreen";
+				if (freeEnergy <= totalEnergy * 0.5) {
+					color = "orange";
+					if (freeEnergy <= totalEnergy * 0.25) {
+						color = "red";
+					}
+				}
+			}
 			result.append(HtmlUtil.span(
 					"color:" + color,
 					"Energy: " + Math.round(freeEnergy) + "/"
