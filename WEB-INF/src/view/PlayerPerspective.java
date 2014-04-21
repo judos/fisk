@@ -2,7 +2,6 @@ package view;
 
 import model.World;
 import model.user.Player;
-import control.server.Debug;
 
 /**
  * @since 20.04.2014
@@ -21,9 +20,7 @@ public class PlayerPerspective {
 	public String getHtml() {
 		String currentPage = this.player.getCurrentPage();
 
-		Debug.addMsg("current page: " + currentPage);
-		Debug.addMsg("Menu Buildings: " + MenuHtml.BUILDINGS);
-		if (currentPage == MenuHtml.BUILDINGS)
+		if (currentPage.equals(MenuHtml.BUILDINGS))
 			return new BuildingContentHtml(this.world, this.player).getHtml();
 
 		return "Hello " + this.player.getName() + "<br>" + "Shows Page: "

@@ -29,4 +29,8 @@ public class Debug {
 	public String getAllDebugMsgs() {
 		return this.content.toString();
 	}
+
+	public static void clear() {
+		getInstance().content = new StringBuffer();
+	}
 }
