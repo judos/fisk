@@ -21,6 +21,7 @@ public class BuildingType {
 		this.defaultCost = cost;
 		this.costFactor = costFactor;
 		this.requirements = new Requirements();
+		this.maxLevel = maxLevel;
 	}
 
 	public BuildingType(String name, Ressources cost, double costFactor) {

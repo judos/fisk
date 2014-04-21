@@ -39,8 +39,8 @@ public class BuildingContentHtml {
 			// TODO: display stufe and costs
 			String link = "?build=" + type.getName();
 			String title = type.getName() + " " + building.getLevel() + "<br>"
-				+ HtmlUtil.img("", "width:50px;height:50px;") + "<br>"
-				+ HtmlUtil.ressourceVertical(costNextLevel);
+					+ HtmlUtil.img("", "width:50px;height:50px;") + "<br>"
+					+ HtmlUtil.ressourceVertical(costNextLevel);
 			if (building.isUpgradeable())
 				html.addTd(HtmlUtil.a(link, title));
 			else
