@@ -39,6 +39,10 @@ public class Planet extends SpaceObject {
 		this.productionPerSecond = new Ressources();
 	}
 
+	public void updateRessources1Second() {
+		this.storage.add(this.productionPerSecond);
+	}
+
 	public void addStartRessources() {
 		this.storage = new Ressources(GameParameters.START_METAL,
 				GameParameters.START_ANTIMONY, 0);
